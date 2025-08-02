@@ -230,32 +230,6 @@ export const Lid = ({
                 <TooltipContent>Il ne reste plus qu&apos;à cliquer !</TooltipContent>
               </Tooltip>
             </TooltipProvider>
-
-            {/* Bouton Télécharger la lettre de motivation */}
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button
-                    variant="outline"
-                    onClick={() =>
-                      downloadFile("/BILYJ-Nolhan-LM.pdf", "BILYJ-Nolhan-Lettre-De-Motivation.pdf", setIsDownloadingLetter)
-                    }
-                    disabled={isDownloadingLetter}
-                  >
-                    {isDownloadingLetter ? (
-                      <span className="flex gap-2 justify-center items-center">
-                        <Loader2 className="animate-spin" /> Téléchargement...
-                      </span>
-                    ) : (
-                      <>
-                        Lettre de motivation <Download />
-                      </>
-                    )}
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>Vous y êtes presque !</TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
           </div>
         </div>
       </motion.div>

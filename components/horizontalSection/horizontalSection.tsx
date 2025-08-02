@@ -101,7 +101,7 @@ export default function ScrollSection() {
                 <div className="leading-6 sm:leading-7">
                   En dehors de mes études, je pratique le&nbsp;
                   <LinkPreview className="border-b pb-1" url="https://www.fftt.com/site/personnes/by-number?number_id=904998">
-                    tennis de table en compétition et suis actuellement classé 9
+                    tennis de table en compétition et suis actuellement classé 10
                   </LinkPreview>
                   &nbsp;, la musculation mais égalament l&apos;esport, un domaine qui allie stratégie et passion pour les jeux vidéo.
                 </div>
