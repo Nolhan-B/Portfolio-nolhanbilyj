@@ -135,7 +135,6 @@ export const Lid = ({
 }) => {
   const { toast } = useToast();
   const [isDownloadingCV, setIsDownloadingCV] = useState(false);
-  const [isDownloadingLetter, setIsDownloadingLetter] = useState(false);
 
   const downloadFile = (fileUrl: string, fileName: string, setIsDownloading: (val: boolean) => void) => {
     toast({
