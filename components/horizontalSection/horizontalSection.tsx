@@ -79,7 +79,7 @@ export default function ScrollSection() {
                   Je m&apos;appelle Nolhan BILYJ,{" "}
                   <TooltipProvider>
                     <Tooltip>
-                      <TooltipTrigger className="border-b">j&apos;ai 19 ans</TooltipTrigger>
+                      <TooltipTrigger className="border-b">j&apos;ai 20 ans</TooltipTrigger>
                       <TooltipContent>Né le 11/08/05 &#127874;</TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
