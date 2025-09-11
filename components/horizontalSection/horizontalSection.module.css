@@ -38,9 +38,11 @@
     width: clamp(125px, 20vw, 300px);
     border-radius: 50%;
     object-fit: cover;
-    object-position: top;
     z-index: 2;
     filter: grayscale(100%);
+    object-position: 60% center;
+    transition: transform 0.4s ease;
+      user-select: none;
   }
   
 

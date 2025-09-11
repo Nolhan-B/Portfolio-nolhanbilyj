@@ -641,21 +641,22 @@ const data = [
           </TooltipProvider>
 
             <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  onClick={() => {
-                    alert("Lien bientôt disponible.");
-                  }}
-                >
-                  <Eye id='la-savoureuse-tt' />
-              </Button>
-              </TooltipTrigger>
-              <TooltipContent>Se rendre sur le site</TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+                <Tooltip>
+                    <TooltipTrigger asChild>
+                        <Button
+                            variant="outline"
+                            size="icon"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                window.open("http://la-savoureuse-clf.com", '_blank');
+                            }}
+                        >
+                            <Eye id='criticlick' />
+                        </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>Se rendre sur le site</TooltipContent>
+                </Tooltip>
+            </TooltipProvider>
           </div>
 
       </div>

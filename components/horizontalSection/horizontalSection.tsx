@@ -8,7 +8,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 
 import { LinkPreview } from "@/components/ui/link-preview";
 import styles from "./horizontalSection.module.css";
-import moi from "@/public/moi.jpg";
+import moi from "@/public/nbilyj.jpg";
 
 export default function ScrollSection() {
   const sectionRef = useRef(null);

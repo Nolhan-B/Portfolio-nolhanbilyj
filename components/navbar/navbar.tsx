@@ -48,7 +48,7 @@ const Navbar = () => {
     <ul className="hidden lg:flex items-center gap-6 text-sm font-medium text-foreground">
       <li onClick={() => scrollToSection("accueil")} className="transition-all hover:text-primary cursor-pointer">Accueil</li>
       <li onClick={() => scrollToSection("qui-suis-je")} className="transition-all hover:text-primary cursor-pointer">Qui suis-je ?</li>
-      <li onClick={() => scrollToSection("mes-competences")} className="transition-all hover:text-primary cursor-pointer">Mes compétences</li>
+      {/*<li onClick={() => scrollToSection("mes-competences")} className="transition-all hover:text-primary cursor-pointer">Mes compétences</li>*/}
       <li>
         <NavigationMenu>
           <NavigationMenuList>
