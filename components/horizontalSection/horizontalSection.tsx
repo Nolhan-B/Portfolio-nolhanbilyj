@@ -83,10 +83,10 @@ export default function ScrollSection() {
                       <TooltipContent>Né le 11/08/05 &#127874;</TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
-                  &nbsp;et suis actuellement étudiant en&nbsp;
-                  <LinkPreview url="https://dossier.parcoursup.fr/Candidats/public/fiches/afficherFicheFormation?g_ta_cod=18547&typeBac=0">
+                  &nbsp;et suis actuellement étudiant à&nbsp;
+                  <LinkPreview url="https://www.42mulhouse.fr">
                     <span className="border-b pb-1">
-                      1ère année de D.U D&apos;informatique à l&apos;UHA4.0 de Mulhouse
+                      l&apos;école 42 de Mulhouse.
                     </span>
                   </LinkPreview>
                   .
@@ -103,7 +103,7 @@ export default function ScrollSection() {
                   <LinkPreview className="border-b pb-1" url="https://www.fftt.com/site/personnes/by-number?number_id=904998">
                     tennis de table en compétition et suis actuellement classé 10
                   </LinkPreview>
-                  &nbsp;, la musculation mais égalament l&apos;esport, un domaine qui allie stratégie et passion pour les jeux vidéo.
+                  &nbsp;, la musculation mais suis égalament l&apos;esport, un domaine qui allie stratégie et passion pour les jeux vidéo.
                 </div>
               </div>
             </div>
