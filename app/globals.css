@@ -6,20 +6,19 @@
 @tailwind utilities;
 
 @layer base {
-  /* Palette 1 — blanc, noir, bleu électrique */
   :root {
-    --paper: 0 0% 96%;
+    --paper: 0 0% 97%;
     --ink: 0 0% 4%;
-    --accent: 232 100% 58%;
-    --accent-fg: 0 0% 100%;
-    /* Couleurs secondaires (palettes rétro), par défaut = accent */
-    --c1: var(--accent);
-    --c2: var(--accent);
-    --c3: var(--accent);
-    --c4: var(--accent);
-    --c5: var(--accent);
-    --on-color: var(--accent-fg);
-    --photo-bg: 0 0% 100%;
+    /* Couleur unie de repli pour l'accent (le vrai accent est le dégradé granuleux) */
+    --accent: 9 88% 64%;
+    --accent-fg: 0 0% 4%;
+
+    /* Dégradé granuleux : jaune, orange, corail, bleu ciel */
+    --g1: #f9d77e;
+    --g2: #f7b26b;
+    --g3: #f5735a;
+    --g4: #8ccbf2;
+    --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 
     /* Variables shadcn/ui conservées pour les composants existants */
     --background: var(--paper);
@@ -28,144 +27,18 @@
     --card-foreground: var(--ink);
     --popover: var(--paper);
     --popover-foreground: var(--ink);
-    --primary: var(--accent);
-    --primary-foreground: 0 0% 100%;
-    --secondary: 40 10% 86%;
+    --primary: var(--ink);
+    --primary-foreground: var(--paper);
+    --secondary: 0 0% 90%;
     --secondary-foreground: var(--ink);
-    --muted: 40 10% 86%;
+    --muted: 0 0% 90%;
     --muted-foreground: 0 0% 35%;
-    --accent-ui: 40 10% 86%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     --border: 0 0% 5%;
     --input: 0 0% 5%;
     --ring: var(--accent);
     --radius: 0rem;
-  }
-
-  /* Palette 2 — noir, blanc, vert acide */
-  :root[data-palette="acid"] {
-    --paper: 0 0% 4%;
-    --ink: 0 0% 95%;
-    --accent: 74 100% 55%;
-    --accent-fg: 0 0% 4%;
-  }
-
-  /* Palette 3 — monochrome strict */
-  :root[data-palette="mono"] {
-    --paper: 0 0% 100%;
-    --ink: 0 0% 0%;
-    --accent: 0 0% 0%;
-    --accent-fg: 0 0% 100%;
-  }
-
-  /* Palette 4 — Memphis (années 80) : blanc, noir, multicolore */
-  :root[data-palette="memphis"] {
-    --paper: 0 0% 100%;
-    --ink: 0 0% 4%;
-    --accent: 327 100% 62%;
-    --accent-fg: 0 0% 4%;
-    --c1: 327 100% 62%;
-    --c2: 48 100% 52%;
-    --c3: 172 100% 40%;
-    --c4: 265 100% 66%;
-    --c5: 214 100% 58%;
-    --on-color: 0 0% 4%;
-    --photo-bg: 48 100% 52%;
-  }
-
-  /* Palette 5 — Synthwave (années 80) : nuit violette et néons */
-  :root[data-palette="synth"] {
-    --paper: 266 65% 8%;
-    --ink: 300 100% 97%;
-    --accent: 326 100% 60%;
-    --accent-fg: 266 65% 8%;
-    --c1: 326 100% 60%;
-    --c2: 186 100% 50%;
-    --c3: 50 100% 60%;
-    --c4: 20 100% 60%;
-    --c5: 275 100% 72%;
-    --on-color: 266 65% 8%;
-    --photo-bg: 326 100% 60%;
-  }
-
-  /* Palette 6 — Pop 90's : jaune vif, primaires */
-  :root[data-palette="pop90"] {
-    --paper: 50 100% 60%;
-    --ink: 0 0% 4%;
-    --accent: 356 90% 56%;
-    --accent-fg: 0 0% 100%;
-    --c1: 356 90% 56%;
-    --c2: 218 100% 58%;
-    --c3: 327 100% 68%;
-    --c4: 152 80% 42%;
-    --c5: 268 90% 64%;
-    --on-color: 0 0% 4%;
-    --photo-bg: 218 100% 58%;
-  }
-
-  /* Palettes 7 à 9 — Dégradé granuleux animé, 4 couleurs */
-  :root:is([data-palette="sunset"], [data-palette="ocean"], [data-palette="duo"]) {
-    --paper: 0 0% 100%;
-    --ink: 0 0% 4%;
-    --accent-fg: 0 0% 4%;
-    --on-color: 0 0% 4%;
-  }
-
-  /* Coucher de soleil : jaune, orange, corail, rose */
-  :root[data-palette="sunset"] {
-    --g1: #f9d77e;
-    --g2: #f7b26b;
-    --g3: #f5735a;
-    --g4: #f29ab5;
-    --accent: 9 88% 66%;
-    --c1: 9 88% 66%;
-    --c2: 44 92% 73%;
-    --c3: 340 78% 78%;
-    --c4: 30 90% 69%;
-    --c5: 9 88% 66%;
-  }
-
-  /* Océan : cyan, bleu, bleu profond, menthe */
-  :root[data-palette="ocean"] {
-    --g1: #a7ecf8;
-    --g2: #6bb8f0;
-    --g3: #3e6fe0;
-    --g4: #86ddb0;
-    --accent: 205 82% 68%;
-    --c1: 205 82% 68%;
-    --c2: 190 85% 82%;
-    --c3: 150 56% 70%;
-    --c4: 222 72% 66%;
-    --c5: 205 82% 68%;
-  }
-
-  /* Duo chaud / froid : jaune, orange, corail, bleu ciel */
-  :root[data-palette="duo"] {
-    --g1: #f9d77e;
-    --g2: #f7b26b;
-    --g3: #f5735a;
-    --g4: #8ccbf2;
-    --accent: 9 88% 66%;
-    --c1: 9 88% 66%;
-    --c2: 203 79% 75%;
-    --c3: 44 92% 73%;
-    --c4: 30 90% 69%;
-    --c5: 203 79% 75%;
-  }
-
-  /* Sections sur fond encre : on garde un accent lisible */
-  :root[data-palette="acid"] .on-ink {
-    --ink: 0 0% 10%;
-    --paper: 0 0% 95%;
-  }
-  :root[data-palette="synth"] .on-ink {
-    --ink: 266 60% 13%;
-    --paper: 300 100% 97%;
-  }
-  :root[data-palette="mono"] .on-ink {
-    --accent: 0 0% 100%;
-    --accent-fg: 0 0% 0%;
   }
 
   * {
@@ -213,47 +86,50 @@
     -webkit-text-stroke: 0.02em currentColor;
   }
 
-  /* Éléments rétro : visibles uniquement avec les palettes 80's / 90's */
-  .deco {
-    display: none;
-  }
-  :root:is([data-palette="memphis"], [data-palette="synth"], [data-palette="pop90"]) .deco {
-    display: block;
-  }
-  :root:is([data-palette="memphis"], [data-palette="synth"], [data-palette="pop90"]) .retro-frame {
-    border: 3px solid hsl(var(--ink));
-    box-shadow: 6px 6px 0 hsl(var(--ink));
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  :root:is([data-palette="memphis"], [data-palette="synth"], [data-palette="pop90"]) .retro-frame:hover {
-    transform: translate(3px, 3px);
-    box-shadow: 3px 3px 0 hsl(var(--ink));
-  }
-
-  :root:is([data-palette="memphis"], [data-palette="synth"], [data-palette="pop90"]) .mq-word:nth-child(5n + 1) { color: hsl(var(--c1)); }
-  :root:is([data-palette="memphis"], [data-palette="synth"], [data-palette="pop90"]) .mq-word:nth-child(5n + 2) { color: hsl(var(--c2)); }
-  :root:is([data-palette="memphis"], [data-palette="synth"], [data-palette="pop90"]) .mq-word:nth-child(5n + 3) { color: hsl(var(--c3)); }
-  :root:is([data-palette="memphis"], [data-palette="synth"], [data-palette="pop90"]) .mq-word:nth-child(5n + 4) { color: hsl(var(--c4)); }
-  :root:is([data-palette="memphis"], [data-palette="synth"], [data-palette="pop90"]) .mq-word:nth-child(5n + 5) { color: hsl(var(--c5)); }
-
-  /* Sur le dégradé, les petits accents du hero passent en noir pour rester lisibles */
-  :root:is([data-palette="sunset"], [data-palette="ocean"], [data-palette="duo"]) #top {
-    --c1: var(--ink);
-    --c2: var(--ink);
-    --c3: var(--ink);
+  /* Dégradé granuleux en ondes, utilisé comme couleur d'accent */
+  .grain-bg,
+  .text-grain,
+  .text-grain [data-char],
+  .text-grain [data-title-char] {
+    background-color: var(--g3);
+    background-image: var(--noise),
+      repeating-radial-gradient(
+        circle at 15% 140%,
+        var(--g1) 0,
+        var(--g2) 7rem,
+        var(--g3) 14rem,
+        var(--g4) 21rem,
+        var(--g3) 28rem,
+        var(--g2) 35rem,
+        var(--g1) 42rem
+      );
+    background-size: 180px 180px, 160% 160%;
+    background-blend-mode: soft-light, normal;
+    animation: grain-drift 16s ease-in-out infinite alternate;
   }
 
-  .grain-only {
-    display: none;
-  }
-  :root:is([data-palette="sunset"], [data-palette="ocean"], [data-palette="duo"]) .grain-only {
-    display: block;
+  /* Les lettres animées portent chacune leur propre dégradé (le clip ne traverse pas les transforms) */
+  .text-grain,
+  .text-grain [data-char],
+  .text-grain [data-title-char] {
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
   .line-mask {
     display: block;
     overflow: hidden;
     padding-bottom: 0.04em;
+  }
+}
+
+@keyframes grain-drift {
+  from {
+    background-position: 0 0, 0% 0%;
+  }
+  to {
+    background-position: 0 0, 100% 60%;
   }
 }
 

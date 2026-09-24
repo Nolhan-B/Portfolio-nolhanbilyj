@@ -6,8 +6,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { profile } from "@/data/projects";
 import photo from "@/public/nolhan.jpg";
-import GrainGradient from "@/components/site/GrainGradient";
-import { Circle, Dots, Squiggle, Triangle, Zigzag } from "@/components/site/Deco";
 
 function Chars({ text }: { text: string }) {
   return (
@@ -48,16 +46,6 @@ export default function Hero() {
           scrollTrigger: { trigger: root.current, start: "top top", end: "bottom top", scrub: true },
         });
 
-        gsap.from(".deco svg", { scale: 0, rotate: -90, duration: 1, ease: "back.out(2)", stagger: 0.08, delay: 0.9 });
-        gsap.utils.toArray<SVGElement>(".deco svg").forEach((el) => {
-          const speed = Number(el.dataset.speed ?? 0);
-          gsap.to(el, {
-            yPercent: speed * 250,
-            rotate: speed * 90,
-            ease: "none",
-            scrollTrigger: { trigger: root.current, start: "top top", end: "bottom top", scrub: true },
-          });
-        });
       }
     }, root);
 
@@ -66,16 +54,6 @@ export default function Hero() {
 
   return (
     <section ref={root} id="top" className="relative overflow-hidden">
-      <GrainGradient className="grain-only pointer-events-none absolute inset-0 h-full w-full" />
-
-      <div className="deco pointer-events-none absolute inset-0" aria-hidden>
-        <Circle color="--c2" className="absolute left-[46%] top-[12%] w-[7vw] min-w-12" data-speed="-0.4" />
-        <Squiggle color="--c3" className="absolute right-[6%] top-[30%] w-[14vw] min-w-20 rotate-[-12deg]" data-speed="0.6" />
-        <Triangle color="--c4" className="absolute left-[3%] top-[56%] w-[6vw] min-w-10 rotate-12" data-speed="-0.8" />
-        <Zigzag color="--c1" className="absolute bottom-[22%] left-[40%] w-[11vw] min-w-16" data-speed="0.5" />
-        <Dots color="--c5" className="absolute right-[30%] top-[9%] w-[6vw] min-w-10" data-speed="-0.3" />
-      </div>
-
       <div className="relative flex min-h-[100svh] flex-col justify-between px-4 pb-6 pt-20 md:px-8 md:pt-24">
         <div data-fade className="grid grid-cols-2 gap-4 font-mono text-[11px] uppercase tracking-wider md:grid-cols-4 md:text-xs">
           <span>(Portfolio — 2026)</span>
@@ -91,7 +69,7 @@ export default function Hero() {
           <span data-line="2" className="flex items-end justify-end gap-[0.06em]">
             <span
               data-photo
-              className="retro-frame relative mb-[0.08em] hidden h-[0.62em] w-[1.35em] shrink-0 overflow-hidden rounded-full bg-[hsl(var(--photo-bg))] md:block"
+              className="relative mb-[0.08em] hidden h-[0.62em] w-[1.35em] shrink-0 overflow-hidden rounded-full md:block"
             >
               <Image
                 src={photo}
@@ -99,13 +77,13 @@ export default function Hero() {
                 fill
                 priority
                 sizes="30vw"
-                className="object-cover object-[50%_42%] grayscale mix-blend-multiply"
+                className="object-cover object-[50%_42%] grayscale"
               />
             </span>
             <span className="line-mask">
               <Chars text="Bilyj" />
             </span>
-            <span className="line-mask text-c1">
+            <span className="line-mask text-grain">
               <Chars text="*" />
             </span>
           </span>
@@ -117,7 +95,7 @@ export default function Hero() {
             <p className="font-display-wide text-[9vw] md:text-[3.4vw]">
               {profile.focus.map((f, i) => (
                 <span key={f}>
-                  {i > 0 && <span style={{ color: `hsl(var(--c${i + 1}))` }}> / </span>}
+                  {i > 0 && <span className="text-accent"> / </span>}
                   {f}
                 </span>
               ))}
@@ -130,13 +108,13 @@ export default function Hero() {
               IA.
             </p>
             <div className="mt-6 flex flex-wrap gap-3 font-mono text-xs uppercase tracking-wider">
-              <a href="#projets-42" className="retro-frame bg-ink px-5 py-3 text-paper transition-colors hover:bg-c2 hover:text-on-color">
+              <a href="#projets-42" className="bg-ink px-5 py-3 text-paper transition-colors hover:grain-bg hover:text-ink">
                 Voir les projets ↓
               </a>
               <a
                 href={profile.cv}
                 target="_blank"
-                className="retro-frame border border-ink bg-paper px-5 py-3 transition-colors hover:bg-c3 hover:text-on-color"
+                className="border border-ink px-5 py-3 transition-colors hover:bg-ink hover:text-paper"
               >
                 CV (PDF) ↗
               </a>
@@ -149,9 +127,9 @@ export default function Hero() {
         {[0, 1].map((k) => (
           <div key={k} className="flex shrink-0 animate-[marquee_28s_linear_infinite] items-center">
             {stack.map((s) => (
-              <span key={s} className="mq-word font-display flex items-center whitespace-nowrap text-[11vw] md:text-[5vw]">
+              <span key={s} className="font-display flex items-center whitespace-nowrap text-[11vw] md:text-[5vw]">
                 <span className="px-[0.3em]">{s}</span>
-                <span className="text-c1">*</span>
+                <span className="text-grain">*</span>
               </span>
             ))}
           </div>
