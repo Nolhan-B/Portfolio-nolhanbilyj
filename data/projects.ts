@@ -17,8 +17,8 @@ export type Project = {
   stack: string[];
   tags: ProjectTag[];
   links?: { site?: string; github?: string };
-  /** Capture d'écran dans /public/projects */
-  image?: string;
+  /** Captures d'écran dans /public/projects (la première est l'image principale) */
+  images?: string[];
 };
 
 export type Experience = {
@@ -336,7 +336,7 @@ export const projectsPro: Project[] = [
     ],
     stack: ["PHP", "Symfony", "Doctrine", "PHPUnit"],
     tags: ["backend", "web"],
-    image: "/projects/kl-logistique.webp",
+    images: ["/projects/kl-logistique.webp"],
   },
   {
     slug: "la-savoureuse",
@@ -377,6 +377,7 @@ export const projectsPro: Project[] = [
     ],
     stack: ["React", "TypeScript", "Supabase", "Tailwind", "Playwright"],
     tags: ["web", "backend"],
+    images: ["/projects/m-studio-print-1.webp", "/projects/m-studio-print-3.webp", "/projects/m-studio-print-2.webp"],
   },
   {
     slug: "db-vtc-comtois",
@@ -397,7 +398,7 @@ export const projectsPro: Project[] = [
     stack: ["HTML", "CSS", "JavaScript", "PHP", "Google Maps API"],
     tags: ["web"],
     links: { site: "https://db-vtc-belfort.fr" },
-    image: "/projects/db-vtc-comtois.webp",
+    images: ["/projects/db-vtc-comtois.webp"],
   },
   {
     slug: "cashless",
@@ -454,7 +455,7 @@ export const projectsPro: Project[] = [
     stack: ["HTML", "CSS", "JavaScript", "PHP"],
     tags: ["web"],
     links: { site: "https://sanomaxsolution.fr" },
-    image: "/projects/sanomax-solution.webp",
+    images: ["/projects/sanomax-solution.webp"],
   },
   {
     slug: "hopinion",
