@@ -383,7 +383,12 @@ export const projectsPro: Project[] = [
     ],
     stack: ["React", "TypeScript", "Supabase", "Tailwind", "Playwright"],
     tags: ["web", "backend"],
-    images: ["/projects/m-studio-print-1.webp", "/projects/m-studio-print-3.webp", "/projects/m-studio-print-2.webp"],
+    images: [
+      "/projects/m-studio-print-accueil.webp",
+      "/projects/m-studio-print-phares.webp",
+      "/projects/m-studio-print-catalogue.webp",
+      "/projects/m-studio-print-produit.webp",
+    ],
   },
   {
     slug: "db-vtc-comtois",
