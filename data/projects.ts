@@ -398,7 +398,13 @@ export const projectsPro: Project[] = [
     stack: ["HTML", "CSS", "JavaScript", "PHP", "Google Maps API"],
     tags: ["web"],
     links: { site: "https://db-vtc-belfort.fr" },
-    images: ["/projects/db-vtc-comtois.webp"],
+    images: [
+      "/projects/db-vtc-comtois.webp",
+      "/projects/db-vtc-comtois-2.webp",
+      "/projects/db-vtc-comtois-4.webp",
+      "/projects/db-vtc-comtois-3.webp",
+      "/projects/db-vtc-comtois-5.webp",
+    ],
   },
   {
     slug: "cashless",
