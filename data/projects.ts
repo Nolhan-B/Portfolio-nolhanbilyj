@@ -17,6 +17,8 @@ export type Project = {
   stack: string[];
   tags: ProjectTag[];
   links?: { site?: string; github?: string };
+  /** Capture d'écran dans /public/projects */
+  image?: string;
 };
 
 export type Experience = {
@@ -271,6 +273,7 @@ export const projects42: Project[] = [
     highlights: ["Plusieurs stratégies selon la taille", "Optimisation du nombre de coups"],
     stack: ["C"],
     tags: ["systemes"],
+    links: { github: "https://github.com/Nolhan-B/push-swap" },
   },
   {
     slug: "netpractice",
@@ -394,6 +397,7 @@ export const projectsPro: Project[] = [
     stack: ["HTML", "CSS", "JavaScript", "PHP", "Google Maps API"],
     tags: ["web"],
     links: { site: "https://db-vtc-belfort.fr" },
+    image: "/projects/db-vtc-comtois.webp",
   },
   {
     slug: "cashless",
@@ -449,6 +453,8 @@ export const projectsPro: Project[] = [
     highlights: ["Formulaire de contact orienté leads", "SEO local"],
     stack: ["HTML", "CSS", "JavaScript", "PHP"],
     tags: ["web"],
+    links: { site: "https://sanomaxsolution.fr" },
+    image: "/projects/sanomax-solution.webp",
   },
   {
     slug: "hopinion",

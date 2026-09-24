@@ -3,7 +3,7 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { projects42, type Project } from "@/data/projects";
+import { profile, projects42, type Project } from "@/data/projects";
 
 const tagLabels: Record<string, string> = {
   web: "Web",
@@ -123,11 +123,11 @@ export default function Projects42() {
     <section ref={root} id="projets-42" className="on-ink bg-ink pb-24 pt-24 text-paper md:pt-32">
       <div className="mb-12 grid gap-6 px-4 md:mb-20 md:grid-cols-12 md:px-8">
         <p className="font-mono text-[11px] uppercase tracking-wider md:col-span-12 md:text-xs">
-          (02) Tronc commun — École 42 Mulhouse
+          (03) Tronc commun — École 42 Mulhouse
         </p>
         <h2
           data-title
-          className="font-display flex flex-wrap items-end gap-x-[0.12em] text-[24vw] md:col-span-12 md:text-[15.5vw]"
+          className="font-display flex flex-wrap items-end gap-x-[0.12em] text-[20vw] md:col-span-12 md:text-[15.5vw]"
           aria-label="Projets 42"
         >
           <span className="line-mask">
@@ -186,6 +186,24 @@ export default function Projects42() {
               </Tag>
             );
           })}
+          <a
+            data-card
+            href={profile.github}
+            target="_blank"
+            rel="noreferrer"
+            className="group flex min-h-[15rem] flex-col justify-between bg-ink p-5 transition-colors hover:grain-bg hover:text-on-grain"
+          >
+            <div className="flex items-start justify-between font-mono text-[11px] uppercase tracking-wider opacity-60">
+              <span>Et le reste</span>
+              <span className="transition-transform group-hover:-translate-y-1 group-hover:translate-x-1">↗</span>
+            </div>
+            <div>
+              <h3 className="font-display mb-3 text-5xl">
+                Tout mon <span className="text-grain group-hover:text-on-grain group-hover:[background:none]">GitHub</span>
+              </h3>
+              <p className="text-sm leading-snug opacity-80">Tous les projets, les piscines et ce qui est en cours.</p>
+            </div>
+          </a>
         </div>
       </div>
     </section>

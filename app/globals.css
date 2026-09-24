@@ -138,9 +138,32 @@
     color: transparent;
   }
 
+  /* Variante resserrée pour les petits éléments : ondes plus fines, défilement plus visible */
+  .grain-tight,
+  .grain-tight [data-char] {
+    background-image: var(--noise),
+      repeating-radial-gradient(
+        circle at 15% 140%,
+        var(--g1) 0,
+        var(--g2) 0.6rem,
+        var(--g3) 1.2rem,
+        var(--g4) 1.7rem,
+        var(--g5) 1.8rem,
+        var(--g4) 1.9rem,
+        var(--g3) 2.4rem,
+        var(--g2) 3rem,
+        var(--g1) 3.6rem
+      );
+    background-size: 180px 180px, 400% 400%;
+    animation: grain-drift 8s ease-in-out infinite alternate;
+  }
+
+  /* Masque des lettres animées, avec de la marge en haut pour ne pas couper les accents */
   .line-mask {
     display: block;
     overflow: hidden;
+    padding-top: 0.14em;
+    margin-top: -0.14em;
     padding-bottom: 0.04em;
   }
 }

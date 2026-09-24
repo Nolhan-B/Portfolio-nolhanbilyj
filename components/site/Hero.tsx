@@ -95,7 +95,7 @@ export default function Hero() {
             <p className="font-display-wide text-[9vw] md:text-[3.4vw]">
               {profile.focus.map((f, i) => (
                 <span key={f}>
-                  {i > 0 && <span className="text-accent"> / </span>}
+                  {i > 0 && <span className="text-grain grain-tight"> / </span>}
                   {f}
                 </span>
               ))}
