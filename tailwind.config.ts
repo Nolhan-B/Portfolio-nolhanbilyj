@@ -24,6 +24,13 @@ const config: Config = {
     extend: {
       colors: {
         paper: "hsl(var(--paper))",
+        c1: "hsl(var(--c1))",
+        c2: "hsl(var(--c2))",
+        c3: "hsl(var(--c3))",
+        c4: "hsl(var(--c4))",
+        c5: "hsl(var(--c5))",
+        "on-color": "hsl(var(--on-color))",
+        row: "hsl(var(--row))",
         ink: "hsl(var(--ink))",
         accent: {
           DEFAULT: "hsl(var(--accent))",

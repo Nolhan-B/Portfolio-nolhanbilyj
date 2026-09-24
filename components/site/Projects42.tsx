@@ -18,16 +18,16 @@ const pad = (n: number) => String(n).padStart(2, "0");
 
 function Row({ project, index, open, onToggle }: { project: Project; index: number; open: boolean; onToggle: () => void }) {
   return (
-    <li data-row className="border-t border-paper/25">
+    <li data-row className="border-t border-paper/25" style={{ ["--row" as string]: `var(--c${(index % 5) + 1})` }}>
       <button
         onClick={onToggle}
         aria-expanded={open}
         className="group relative grid w-full grid-cols-[2.5rem_1fr] items-center gap-2 overflow-hidden px-4 py-4 text-left md:grid-cols-[4rem_1fr_auto] md:px-8 md:py-5"
       >
-        <span className="absolute inset-0 origin-bottom scale-y-0 bg-accent transition-transform duration-500 ease-expo group-hover:scale-y-100" />
-        <span className="relative font-mono text-xs transition-colors group-hover:text-accent-foreground">{pad(index + 1)}</span>
+        <span className="absolute inset-0 origin-bottom scale-y-0 bg-row transition-transform duration-500 ease-expo group-hover:scale-y-100" />
+        <span className="relative font-mono text-xs transition-colors group-hover:text-on-color">{pad(index + 1)}</span>
         <span className="relative flex flex-wrap items-center gap-x-4 gap-y-1">
-          <span className="font-display text-[12vw] transition-[transform,color] duration-500 ease-expo group-hover:translate-x-3 group-hover:text-accent-foreground md:text-[7vw]">
+          <span className="font-display text-[12vw] transition-[transform,color] duration-500 ease-expo group-hover:translate-x-3 group-hover:text-on-color md:text-[7vw]">
             {project.title}
           </span>
           {project.status === "en-cours" && (
@@ -37,7 +37,7 @@ function Row({ project, index, open, onToggle }: { project: Project; index: numb
             </span>
           )}
         </span>
-        <span className="relative hidden text-right font-mono text-xs uppercase tracking-wider transition-colors group-hover:text-accent-foreground md:block">
+        <span className="relative hidden text-right font-mono text-xs uppercase tracking-wider transition-colors group-hover:text-on-color md:block">
           <span className="block">{project.tags.map((t) => tagLabels[t]).join(" · ")}</span>
           <span className="block opacity-60">{project.period}</span>
         </span>
@@ -165,14 +165,15 @@ export default function Projects42() {
       <div className="mt-20 px-4 md:mt-28 md:px-8">
         <p className="mb-6 font-mono text-[11px] uppercase tracking-wider md:text-xs">Aussi à 42</p>
         <div className="grid gap-px bg-paper/25 sm:grid-cols-2 lg:grid-cols-4">
-          {others.map((p) => {
+          {others.map((p, i) => {
             const Tag = p.links?.github ? "a" : "div";
             return (
               <Tag
                 key={p.slug}
                 data-card
+                style={{ ["--row" as string]: `var(--c${(i % 5) + 1})` }}
                 {...(p.links?.github ? { href: p.links.github, target: "_blank", rel: "noreferrer" } : {})}
-                className="group flex min-h-[15rem] flex-col justify-between bg-ink p-5 transition-colors hover:bg-paper hover:text-ink"
+                className="group flex min-h-[15rem] flex-col justify-between bg-ink p-5 transition-colors hover:bg-row hover:text-on-color"
               >
                 <div className="flex items-start justify-between font-mono text-[11px] uppercase tracking-wider opacity-60">
                   <span>{p.period}</span>

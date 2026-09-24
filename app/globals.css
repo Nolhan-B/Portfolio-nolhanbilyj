@@ -12,6 +12,14 @@
     --ink: 0 0% 4%;
     --accent: 232 100% 58%;
     --accent-fg: 0 0% 100%;
+    /* Couleurs secondaires (palettes rétro), par défaut = accent */
+    --c1: var(--accent);
+    --c2: var(--accent);
+    --c3: var(--accent);
+    --c4: var(--accent);
+    --c5: var(--accent);
+    --on-color: var(--accent-fg);
+    --photo-bg: 0 0% 100%;
 
     /* Variables shadcn/ui conservées pour les composants existants */
     --background: var(--paper);
@@ -51,10 +59,59 @@
     --accent-fg: 0 0% 100%;
   }
 
+  /* Palette 4 — Memphis (années 80) : blanc, noir, multicolore */
+  :root[data-palette="memphis"] {
+    --paper: 0 0% 100%;
+    --ink: 0 0% 4%;
+    --accent: 327 100% 62%;
+    --accent-fg: 0 0% 4%;
+    --c1: 327 100% 62%;
+    --c2: 48 100% 52%;
+    --c3: 172 100% 40%;
+    --c4: 265 100% 66%;
+    --c5: 214 100% 58%;
+    --on-color: 0 0% 4%;
+    --photo-bg: 48 100% 52%;
+  }
+
+  /* Palette 5 — Synthwave (années 80) : nuit violette et néons */
+  :root[data-palette="synth"] {
+    --paper: 266 65% 8%;
+    --ink: 300 100% 97%;
+    --accent: 326 100% 60%;
+    --accent-fg: 266 65% 8%;
+    --c1: 326 100% 60%;
+    --c2: 186 100% 50%;
+    --c3: 50 100% 60%;
+    --c4: 20 100% 60%;
+    --c5: 275 100% 72%;
+    --on-color: 266 65% 8%;
+    --photo-bg: 326 100% 60%;
+  }
+
+  /* Palette 6 — Pop 90's : jaune vif, primaires */
+  :root[data-palette="pop90"] {
+    --paper: 50 100% 60%;
+    --ink: 0 0% 4%;
+    --accent: 356 90% 56%;
+    --accent-fg: 0 0% 100%;
+    --c1: 356 90% 56%;
+    --c2: 218 100% 58%;
+    --c3: 327 100% 68%;
+    --c4: 152 80% 42%;
+    --c5: 268 90% 64%;
+    --on-color: 0 0% 4%;
+    --photo-bg: 218 100% 58%;
+  }
+
   /* Sections sur fond encre : on garde un accent lisible */
   :root[data-palette="acid"] .on-ink {
     --ink: 0 0% 10%;
     --paper: 0 0% 95%;
+  }
+  :root[data-palette="synth"] .on-ink {
+    --ink: 266 60% 13%;
+    --paper: 300 100% 97%;
   }
   :root[data-palette="mono"] .on-ink {
     --accent: 0 0% 100%;
@@ -105,6 +162,29 @@
     color: transparent;
     -webkit-text-stroke: 0.02em currentColor;
   }
+
+  /* Éléments rétro : visibles uniquement avec les palettes 80's / 90's */
+  .deco {
+    display: none;
+  }
+  :root:is([data-palette="memphis"], [data-palette="synth"], [data-palette="pop90"]) .deco {
+    display: block;
+  }
+  :root:is([data-palette="memphis"], [data-palette="synth"], [data-palette="pop90"]) .retro-frame {
+    border: 3px solid hsl(var(--ink));
+    box-shadow: 6px 6px 0 hsl(var(--ink));
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  :root:is([data-palette="memphis"], [data-palette="synth"], [data-palette="pop90"]) .retro-frame:hover {
+    transform: translate(3px, 3px);
+    box-shadow: 3px 3px 0 hsl(var(--ink));
+  }
+
+  :root:is([data-palette="memphis"], [data-palette="synth"], [data-palette="pop90"]) .mq-word:nth-child(5n + 1) { color: hsl(var(--c1)); }
+  :root:is([data-palette="memphis"], [data-palette="synth"], [data-palette="pop90"]) .mq-word:nth-child(5n + 2) { color: hsl(var(--c2)); }
+  :root:is([data-palette="memphis"], [data-palette="synth"], [data-palette="pop90"]) .mq-word:nth-child(5n + 3) { color: hsl(var(--c3)); }
+  :root:is([data-palette="memphis"], [data-palette="synth"], [data-palette="pop90"]) .mq-word:nth-child(5n + 4) { color: hsl(var(--c4)); }
+  :root:is([data-palette="memphis"], [data-palette="synth"], [data-palette="pop90"]) .mq-word:nth-child(5n + 5) { color: hsl(var(--c5)); }
 
   .line-mask {
     display: block;
