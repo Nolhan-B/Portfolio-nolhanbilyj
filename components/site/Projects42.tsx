@@ -25,19 +25,19 @@ function Row({ project, index, open, onToggle }: { project: Project; index: numb
         className="group relative grid w-full grid-cols-[2.5rem_1fr] items-center gap-2 overflow-hidden px-4 py-4 text-left md:grid-cols-[4rem_1fr_auto] md:px-8 md:py-5"
       >
         <span className="absolute inset-0 origin-bottom scale-y-0 grain-bg transition-transform duration-500 ease-expo group-hover:scale-y-100" />
-        <span className="relative font-mono text-xs transition-colors group-hover:text-ink">{pad(index + 1)}</span>
+        <span className="relative font-mono text-xs transition-colors group-hover:text-on-grain">{pad(index + 1)}</span>
         <span className="relative flex flex-wrap items-center gap-x-4 gap-y-1">
-          <span className="font-display text-[12vw] transition-[transform,color] duration-500 ease-expo group-hover:translate-x-3 group-hover:text-ink md:text-[7vw]">
+          <span className="font-display text-[12vw] transition-[transform,color] duration-500 ease-expo group-hover:translate-x-3 group-hover:text-on-grain md:text-[7vw]">
             {project.title}
           </span>
           {project.status === "en-cours" && (
-            <span className="grain-bg flex items-center gap-2 rounded-full px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-ink group-hover:!bg-none group-hover:bg-ink group-hover:text-paper">
+            <span className="grain-bg flex items-center gap-2 rounded-full px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-on-grain group-hover:!bg-none group-hover:bg-ink group-hover:text-paper">
               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-current" />
               En cours
             </span>
           )}
         </span>
-        <span className="relative hidden text-right font-mono text-xs uppercase tracking-wider transition-colors group-hover:text-ink md:block">
+        <span className="relative hidden text-right font-mono text-xs uppercase tracking-wider transition-colors group-hover:text-on-grain md:block">
           <span className="block">{project.tags.map((t) => tagLabels[t]).join(" · ")}</span>
           <span className="block opacity-60">{project.period}</span>
         </span>
@@ -75,7 +75,7 @@ function Row({ project, index, open, onToggle }: { project: Project; index: numb
                   href={project.links.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-8 inline-block bg-paper px-5 py-3 font-mono text-xs uppercase tracking-wider text-ink transition-colors hover:grain-bg"
+                  className="mt-8 inline-block bg-paper px-5 py-3 font-mono text-xs uppercase tracking-wider text-ink transition-colors hover:grain-bg hover:text-on-grain"
                 >
                   Voir sur GitHub ↗
                 </a>
@@ -172,7 +172,7 @@ export default function Projects42() {
                 key={p.slug}
                 data-card
                 {...(p.links?.github ? { href: p.links.github, target: "_blank", rel: "noreferrer" } : {})}
-                className="group flex min-h-[15rem] flex-col justify-between bg-ink p-5 transition-colors hover:grain-bg hover:text-ink"
+                className="group flex min-h-[15rem] flex-col justify-between bg-ink p-5 transition-colors hover:grain-bg hover:text-on-grain"
               >
                 <div className="flex items-start justify-between font-mono text-[11px] uppercase tracking-wider opacity-60">
                   <span>{p.period}</span>

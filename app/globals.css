@@ -18,6 +18,7 @@
     --g2: #f7b26b;
     --g3: #f5735a;
     --g4: #8ccbf2;
+    --g5: #7fd99a;
     --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 
     /* Variables shadcn/ui conservées pour les composants existants */
@@ -39,6 +40,23 @@
     --input: 0 0% 5%;
     --ring: var(--accent);
     --radius: 0rem;
+  }
+
+  /* Mode sombre */
+  .dark {
+    --paper: 0 0% 5%;
+    --ink: 0 0% 95%;
+    --secondary: 0 0% 14%;
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 65%;
+    --border: 0 0% 95%;
+    --input: 0 0% 95%;
+  }
+
+  /* En mode sombre, les sections « encre » restent sombres, un ton au-dessus du fond */
+  .dark .on-ink {
+    --ink: 0 0% 11%;
+    --paper: 0 0% 95%;
   }
 
   * {
@@ -99,9 +117,8 @@
         var(--g2) 7rem,
         var(--g3) 14rem,
         var(--g4) 21rem,
-        var(--g3) 28rem,
-        var(--g2) 35rem,
-        var(--g1) 42rem
+        var(--g5) 28rem,
+        var(--g1) 35rem
       );
     background-size: 180px 180px, 160% 160%;
     background-blend-mode: soft-light, normal;

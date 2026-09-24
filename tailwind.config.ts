@@ -24,6 +24,8 @@ const config: Config = {
     extend: {
       colors: {
         paper: "hsl(var(--paper))",
+        // Texte posé sur le dégradé : toujours foncé, quel que soit le thème
+        "on-grain": "hsl(0 0% 4%)",
         ink: "hsl(var(--ink))",
         accent: {
           DEFAULT: "hsl(var(--accent))",

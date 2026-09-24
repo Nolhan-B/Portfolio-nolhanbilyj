@@ -32,7 +32,7 @@ export default function Hero() {
       if (!reduce) {
         const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
         tl.from("[data-char]", { yPercent: 110, duration: 1.3, stagger: 0.045 })
-          .from("[data-photo]", { width: 0, duration: 1.2, ease: "expo.inOut" }, 0.35)
+          .from("[data-photo]", { scale: 0, rotate: -40, duration: 1.2, ease: "expo.out" }, 0.45)
           .from("[data-fade]", { y: 24, opacity: 0, duration: 1, stagger: 0.08 }, 0.7);
 
         gsap.to("[data-line='1']", {
@@ -62,29 +62,29 @@ export default function Hero() {
           <span className="hidden text-right md:block">Scroll ↓</span>
         </div>
 
-        <h1 className="font-display my-8 text-[27vw] md:my-0 md:text-[19.5vw]" aria-label={profile.name}>
+        <h1 className="font-display my-8 text-[25vw] md:my-0 md:text-[19.5vw]" aria-label={profile.name}>
           <span data-line="1" className="line-mask">
             <Chars text="Nolhan" />
           </span>
           <span data-line="2" className="flex items-end justify-end gap-[0.06em]">
             <span
               data-photo
-              className="relative mb-[0.08em] hidden h-[0.62em] w-[1.35em] shrink-0 overflow-hidden rounded-full md:block"
+              className="relative mb-[0.06em] mr-[0.04em] block aspect-square w-[0.72em] shrink-0 overflow-hidden rounded-full md:w-[0.8em]"
             >
               <Image
                 src={photo}
-                alt=""
+                alt="Nolhan Bilyj"
                 fill
                 priority
-                sizes="30vw"
-                className="object-cover object-[50%_42%] grayscale"
+                sizes="(min-width: 768px) 16vw, 20vw"
+                className="object-cover object-[50%_45%] grayscale"
               />
             </span>
             <span className="line-mask">
               <Chars text="Bilyj" />
             </span>
             <span className="line-mask text-grain">
-              <Chars text="*" />
+              <Chars text="." />
             </span>
           </span>
         </h1>
@@ -108,7 +108,7 @@ export default function Hero() {
               IA.
             </p>
             <div className="mt-6 flex flex-wrap gap-3 font-mono text-xs uppercase tracking-wider">
-              <a href="#projets-42" className="bg-ink px-5 py-3 text-paper transition-colors hover:grain-bg hover:text-ink">
+              <a href="#projets-42" className="bg-ink px-5 py-3 text-paper transition-colors hover:grain-bg hover:text-on-grain">
                 Voir les projets ↓
               </a>
               <a

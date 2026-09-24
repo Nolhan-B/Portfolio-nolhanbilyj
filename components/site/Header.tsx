@@ -1,4 +1,5 @@
 import { profile } from "@/data/projects";
+import ThemeToggle from "@/components/site/ThemeToggle";
 
 const links = [
   { href: "#parcours", label: "Parcours" },
@@ -20,13 +21,20 @@ export default function Header() {
             </a>
           ))}
         </nav>
-        <a href={`mailto:${profile.email}`} className="flex items-center gap-2">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
-          </span>
-          {profile.status}
-        </a>
+        <div className="flex items-center gap-5 md:gap-8">
+          <ThemeToggle />
+          <a
+            href={`mailto:${profile.email}`}
+            className="flex items-center gap-2"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
+            </span>
+            <span className="hidden sm:inline">{profile.status}</span>
+            <span className="sm:hidden">Alternance</span>
+          </a>
+        </div>
       </div>
     </header>
   );
