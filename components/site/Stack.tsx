@@ -21,7 +21,7 @@ export default function Stack() {
             <p className="mb-5 font-mono text-[11px] uppercase tracking-wider text-paper/60">{category}</p>
             <ul className="space-y-1">
               {items.map((item) => (
-                <li key={item} className="font-display-wide text-lg transition-colors hover:text-grain md:text-xl">
+                <li key={item} className="grain-hover font-display-wide w-fit text-lg md:text-xl">
                   {item}
                 </li>
               ))}

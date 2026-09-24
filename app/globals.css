@@ -107,6 +107,7 @@
 
   /* Dégradé granuleux en ondes, utilisé comme couleur d'accent */
   .grain-bg,
+  .grain-hover,
   .text-grain,
   .text-grain [data-char],
   .text-grain [data-title-char] {
@@ -135,6 +136,17 @@
   .text-grain [data-title-char] {
     -webkit-background-clip: text;
     background-clip: text;
+    color: transparent;
+  }
+
+  /* Texte qui se remplit du dégradé au survol : le dégradé est toujours là derrière le texte,
+     seule la couleur change, donc l'aller et le retour sont fluides */
+  .grain-hover {
+    -webkit-background-clip: text;
+    background-clip: text;
+    transition: color 0.35s ease;
+  }
+  .grain-hover:hover {
     color: transparent;
   }
 

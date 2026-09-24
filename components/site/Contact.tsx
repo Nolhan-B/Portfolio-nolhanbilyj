@@ -43,7 +43,7 @@ export default function Contact() {
             <p className="mb-3 font-mono text-[11px] uppercase tracking-wider opacity-60">Par email</p>
             <a
               href={`mailto:${profile.email}`}
-              className="font-display-wide inline-block text-[5.4vw] underline decoration-[0.06em] underline-offset-[0.15em] transition-colors hover:text-grain sm:text-3xl lg:text-[2.3vw]"
+              className="grain-hover font-display-wide inline-block text-[5.4vw] underline decoration-ink decoration-[0.06em] underline-offset-[0.15em] sm:text-3xl lg:text-[2.3vw]"
             >
               {profile.email.split("@")[0]}@<wbr />
               {profile.email.split("@")[1]}
