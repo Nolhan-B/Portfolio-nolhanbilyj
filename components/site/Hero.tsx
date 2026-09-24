@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { profile } from "@/data/projects";
 import photo from "@/public/nolhan.jpg";
+import GrainGradient from "@/components/site/GrainGradient";
 import { Circle, Dots, Squiggle, Triangle, Zigzag } from "@/components/site/Deco";
 
 function Chars({ text }: { text: string }) {
@@ -65,6 +66,8 @@ export default function Hero() {
 
   return (
     <section ref={root} id="top" className="relative overflow-hidden">
+      <GrainGradient className="grain-only pointer-events-none absolute inset-0 h-full w-full" />
+
       <div className="deco pointer-events-none absolute inset-0" aria-hidden>
         <Circle color="--c2" className="absolute left-[46%] top-[12%] w-[7vw] min-w-12" data-speed="-0.4" />
         <Squiggle color="--c3" className="absolute right-[6%] top-[30%] w-[14vw] min-w-20 rotate-[-12deg]" data-speed="0.6" />

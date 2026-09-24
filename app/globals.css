@@ -104,6 +104,20 @@
     --photo-bg: 218 100% 58%;
   }
 
+  /* Palette 7 — Dégradé granuleux arc-en-ciel */
+  :root[data-palette="grain"] {
+    --paper: 0 0% 100%;
+    --ink: 0 0% 4%;
+    --accent: 340 85% 72%;
+    --accent-fg: 0 0% 4%;
+    --c1: 340 85% 72%;
+    --c2: 191 85% 80%;
+    --c3: 9 88% 60%;
+    --c4: 128 58% 64%;
+    --c5: 42 92% 72%;
+    --on-color: 0 0% 4%;
+  }
+
   /* Sections sur fond encre : on garde un accent lisible */
   :root[data-palette="acid"] .on-ink {
     --ink: 0 0% 10%;
@@ -185,6 +199,20 @@
   :root:is([data-palette="memphis"], [data-palette="synth"], [data-palette="pop90"]) .mq-word:nth-child(5n + 3) { color: hsl(var(--c3)); }
   :root:is([data-palette="memphis"], [data-palette="synth"], [data-palette="pop90"]) .mq-word:nth-child(5n + 4) { color: hsl(var(--c4)); }
   :root:is([data-palette="memphis"], [data-palette="synth"], [data-palette="pop90"]) .mq-word:nth-child(5n + 5) { color: hsl(var(--c5)); }
+
+  /* Sur le dégradé, les petits accents du hero passent en noir pour rester lisibles */
+  :root[data-palette="grain"] #top {
+    --c1: var(--ink);
+    --c2: var(--ink);
+    --c3: var(--ink);
+  }
+
+  .grain-only {
+    display: none;
+  }
+  :root[data-palette="grain"] .grain-only {
+    display: block;
+  }
 
   .line-mask {
     display: block;

@@ -11,7 +11,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="fr">
+    <html lang="fr" suppressHydrationWarning>
+      <head>
+        {/* Aperçu des palettes : ?palette=memphis|synth|pop90|grain|acid|mono */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var p=new URLSearchParams(location.search).get("palette");if(p&&/^[a-z0-9]+$/.test(p))document.documentElement.setAttribute("data-palette",p)}catch(e){}`,
+          }}
+        />
+      </head>
       <body>
         <SmoothScroll />
         {children}
