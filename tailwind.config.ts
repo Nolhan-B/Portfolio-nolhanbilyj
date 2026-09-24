@@ -23,6 +23,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        paper: "hsl(var(--paper))",
+        // Texte posé sur le dégradé : toujours foncé, quel que soit le thème
+        "on-grain": "hsl(0 0% 4%)",
+        ink: "hsl(var(--ink))",
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-fg))",
+        },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -45,10 +53,6 @@ const config: Config = {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
         },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
@@ -68,6 +72,13 @@ const config: Config = {
           "5": "hsl(var(--chart-5))",
         },
       },
+      transitionTimingFunction: {
+        expo: "cubic-bezier(.7,0,.2,1)",
+      },
+      fontFamily: {
+        sans: ['"Archivo Variable"', "system-ui", "sans-serif"],
+        mono: ['"JetBrains Mono Variable"', "ui-monospace", "monospace"],
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -77,6 +88,10 @@ const config: Config = {
         aurora: "aurora 60s linear infinite",
       },
       keyframes: {
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-100%)" },
+        },
         aurora: {
           from: {
             backgroundPosition: "50% 50%, 50% 50%",

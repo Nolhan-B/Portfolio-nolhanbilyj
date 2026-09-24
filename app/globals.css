@@ -1,100 +1,199 @@
+@import "@fontsource-variable/archivo/wdth.css";
+@import "@fontsource-variable/jetbrains-mono/index.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-html, body {
-  scroll-behavior: smooth;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
-
-
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
-    --radius: 0.5rem;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    --paper: 0 0% 97%;
+    --ink: 0 0% 4%;
+    /* Couleur unie de repli pour l'accent (le vrai accent est le dégradé granuleux) */
+    --accent: 9 88% 64%;
+    --accent-fg: 0 0% 4%;
+
+    /* Dégradé granuleux : jaune, orange, corail, bleu ciel */
+    --g1: #f9d77e;
+    --g2: #f7b26b;
+    --g3: #f5735a;
+    --g4: #8ccbf2;
+    /* Touche de vert : environ 5 % du cycle, glissée au milieu du bleu ciel */
+    --g5: #7fd99a;
+    --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+    /* Variables shadcn/ui conservées pour les composants existants */
+    --background: var(--paper);
+    --foreground: var(--ink);
+    --card: var(--paper);
+    --card-foreground: var(--ink);
+    --popover: var(--paper);
+    --popover-foreground: var(--ink);
+    --primary: var(--ink);
+    --primary-foreground: var(--paper);
+    --secondary: 0 0% 90%;
+    --secondary-foreground: var(--ink);
+    --muted: 0 0% 90%;
+    --muted-foreground: 0 0% 35%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 5%;
+    --input: 0 0% 5%;
+    --ring: var(--accent);
+    --radius: 0rem;
   }
 
+  /* Mode sombre */
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --paper: 0 0% 5%;
+    --ink: 0 0% 95%;
+    --secondary: 0 0% 14%;
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 65%;
+    --border: 0 0% 95%;
+    --input: 0 0% 95%;
   }
-}
 
-@layer base {
+  /* En mode sombre, les sections « encre » restent sombres, un ton au-dessus du fond */
+  .dark .on-ink {
+    --ink: 0 0% 11%;
+    --paper: 0 0% 95%;
+  }
+
   * {
     @apply border-border;
   }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-paper text-ink font-sans;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: hsl(var(--accent));
+    color: hsl(var(--accent-fg));
   }
 }
 
-::selection {
-  background-color: hsl(var(--primary));
-  color: white;
+@layer utilities {
+  /* Typo display : Archivo condensé en graisse maximale */
+  .font-display {
+    font-family: "Archivo Variable", sans-serif;
+    font-weight: 900;
+    font-stretch: 72%;
+    letter-spacing: -0.02em;
+    line-height: 0.82;
+    text-transform: uppercase;
+  }
+
+  .font-display-wide {
+    font-family: "Archivo Variable", sans-serif;
+    font-weight: 900;
+    font-stretch: 125%;
+    letter-spacing: -0.03em;
+    line-height: 0.9;
+    text-transform: uppercase;
+  }
+
+  .text-outline {
+    color: transparent;
+    -webkit-text-stroke: 0.02em currentColor;
+  }
+
+  /* Dégradé granuleux en ondes, utilisé comme couleur d'accent */
+  .grain-bg,
+  .text-grain,
+  .text-grain [data-char],
+  .text-grain [data-title-char] {
+    background-color: var(--g3);
+    background-image: var(--noise),
+      repeating-radial-gradient(
+        circle at 15% 140%,
+        var(--g1) 0,
+        var(--g2) 7rem,
+        var(--g3) 14rem,
+        var(--g4) 20rem,
+        var(--g5) 21rem,
+        var(--g4) 22rem,
+        var(--g3) 28rem,
+        var(--g2) 35rem,
+        var(--g1) 42rem
+      );
+    background-size: 180px 180px, 160% 160%;
+    background-blend-mode: soft-light, normal;
+    animation: grain-drift 16s ease-in-out infinite alternate;
+  }
+
+  /* Les lettres animées portent chacune leur propre dégradé (le clip ne traverse pas les transforms) */
+  .text-grain,
+  .text-grain [data-char],
+  .text-grain [data-title-char] {
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Variante resserrée pour les petits éléments : ondes plus fines, défilement plus visible */
+  .grain-tight,
+  .grain-tight [data-char] {
+    background-image: var(--noise),
+      repeating-radial-gradient(
+        circle at 15% 140%,
+        var(--g1) 0,
+        var(--g2) 0.6rem,
+        var(--g3) 1.2rem,
+        var(--g4) 1.7rem,
+        var(--g5) 1.8rem,
+        var(--g4) 1.9rem,
+        var(--g3) 2.4rem,
+        var(--g2) 3rem,
+        var(--g1) 3.6rem
+      );
+    background-size: 180px 180px, 400% 400%;
+    animation: grain-drift 8s ease-in-out infinite alternate;
+  }
+
+  /* Masque des lettres animées, avec de la marge en haut pour ne pas couper les accents */
+  .line-mask {
+    display: block;
+    overflow: hidden;
+    padding-top: 0.14em;
+    margin-top: -0.14em;
+    padding-bottom: 0.04em;
+  }
 }
 
-.no-visible-scrollbar {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  -webkit-overflow-scrolling: touch;
+@keyframes grain-drift {
+  from {
+    background-position: 0 0, 0% 0%;
+  }
+  to {
+    background-position: 0 0, 100% 60%;
+  }
 }
- 
-.no-visible-scrollbar::-webkit-scrollbar {
-  display: none;
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
