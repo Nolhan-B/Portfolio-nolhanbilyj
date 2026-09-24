@@ -27,7 +27,10 @@ function Row({ project, index, open, onToggle }: { project: Project; index: numb
         <span className="absolute inset-0 origin-bottom scale-y-0 grain-bg transition-transform duration-500 ease-expo group-hover:scale-y-100" />
         <span className="relative font-mono text-xs transition-colors group-hover:text-on-grain">{pad(index + 1)}</span>
         <span className="relative flex flex-wrap items-center gap-x-4 gap-y-1">
-          <span className="font-display text-[12vw] transition-[transform,color] duration-500 ease-expo group-hover:translate-x-3 group-hover:text-on-grain md:text-[7vw]">
+          <span
+            className="font-display text-[length:var(--fs)] transition-[transform,color] duration-500 ease-expo group-hover:translate-x-3 group-hover:text-on-grain md:text-[7vw]"
+            style={{ ["--fs" as string]: `min(12vw, calc((100vw - 6rem) / ${project.title.length * 0.6}))` }}
+          >
             {project.title}
           </span>
           {project.status === "en-cours" && (

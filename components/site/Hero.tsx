@@ -118,6 +118,14 @@ export default function Hero() {
               >
                 CV (PDF) ↗
               </a>
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="border border-ink px-5 py-3 transition-colors hover:bg-ink hover:text-paper"
+              >
+                LinkedIn ↗
+              </a>
             </div>
           </div>
         </div>

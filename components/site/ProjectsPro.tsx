@@ -7,25 +7,26 @@ import { TitleChars, useReveal } from "@/components/site/useReveal";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-function Gallery({ project, index }: { project: Project; index: number }) {
+function Gallery({ project }: { project: Project }) {
   const images = project.images!;
   const [active, setActive] = useState(0);
   return (
     <div>
-      {/* La capture est posée sur le dégradé animé, affichée entière avec une ombre */}
-      <div className="grain-bg group/img relative aspect-[16/10] overflow-hidden border border-ink" style={{ animationDelay: `${-index * 3}s` }}>
+      {/* Cadre fixe : la capture est affichée entière, les bords sont comblés par la même image floutée */}
+      <div className="group/img relative aspect-[16/10] overflow-hidden border border-ink bg-ink">
         {images.map((src, i) => (
           <div
             key={src}
-            className={`absolute inset-[5%] transition-opacity duration-500 ${i === active ? "opacity-100" : "opacity-0"}`}
+            className={`absolute inset-0 transition-opacity duration-500 ${i === active ? "opacity-100" : "opacity-0"}`}
             aria-hidden={i !== active}
           >
+            <Image src={src} alt="" fill sizes="10vw" className="scale-110 object-cover opacity-60 blur-2xl" />
             <Image
               src={src}
               alt={`Capture ${i + 1} de ${project.title}`}
               fill
-              sizes="(min-width: 1024px) 50vw, 90vw"
-              className="object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,0.35)] transition-transform duration-700 ease-expo group-hover/img:scale-[1.02]"
+              sizes="(min-width: 1024px) 55vw, 100vw"
+              className="object-contain transition-transform duration-700 ease-expo group-hover/img:scale-[1.02]"
             />
           </div>
         ))}
@@ -38,11 +39,13 @@ function Gallery({ project, index }: { project: Project; index: number }) {
               onClick={() => setActive(i)}
               aria-label={`Afficher la capture ${i + 1} de ${project.title}`}
               aria-pressed={i === active}
-              className={`relative h-14 w-20 overflow-hidden border transition-opacity md:h-16 md:w-24 ${
-                i === active ? "border-2 border-ink opacity-100" : "border-ink/30 opacity-50 hover:opacity-100"
+              className={`relative h-14 w-20 overflow-hidden transition-opacity md:h-16 md:w-24 ${
+                i === active ? "grain-bg p-[3px] opacity-100" : "border border-ink/30 opacity-50 hover:opacity-100"
               }`}
             >
-              <Image src={src} alt="" fill sizes="96px" className="object-cover object-top" />
+              <span className="relative block h-full w-full">
+                <Image src={src} alt="" fill sizes="96px" className="object-cover object-top" />
+              </span>
             </button>
           ))}
         </div>
@@ -52,7 +55,7 @@ function Gallery({ project, index }: { project: Project; index: number }) {
 }
 
 function Visual({ project, index }: { project: Project; index: number }) {
-  if (project.images?.length) return <Gallery project={project} index={index} />;
+  if (project.images?.length) return <Gallery project={project} />;
 
   // Pas de capture (projet privé ou chez le client) : une affiche typographique sur le dégradé
   return (
@@ -69,14 +72,18 @@ function Visual({ project, index }: { project: Project; index: number }) {
 function Featured({ project, index }: { project: Project; index: number }) {
   const flip = index % 2 === 1;
   return (
-    <article data-reveal className="grid grid-cols-1 items-center gap-8 border-t border-ink/20 py-12 lg:grid-cols-12 lg:gap-10 md:py-20">
+    <article data-reveal className="relative grid grid-cols-1 items-center gap-8 py-12 lg:grid-cols-12 lg:gap-10 md:py-20">
+      {/* Filet en dégradé animé en haut de chaque projet */}
+      <span aria-hidden className="grain-bg absolute inset-x-0 top-0 h-1" style={{ animationDelay: `${-index * 3}s` }} />
       <div className={`min-w-0 lg:col-span-7 ${flip ? "lg:order-2 lg:col-start-6" : ""}`}>
         <Visual project={project} index={index} />
       </div>
       <div className={`min-w-0 lg:col-span-5 ${flip ? "lg:order-1 lg:col-start-1 lg:row-start-1" : ""}`}>
-        <div className="mb-4 flex items-center justify-between font-mono text-[11px] uppercase tracking-wider">
-          <span>{pad(index + 1)}</span>
-          <span className="opacity-60">{project.period}</span>
+        <div className="mb-4 flex items-end justify-between">
+          <span className="font-display text-grain text-6xl md:text-7xl" style={{ animationDelay: `${-index * 3}s` }}>
+            {pad(index + 1)}
+          </span>
+          <span className="font-mono text-[11px] uppercase tracking-wider opacity-60">{project.period}</span>
         </div>
         <p className="mb-3 font-mono text-[11px] uppercase tracking-wider opacity-60">{project.context}</p>
         <h3 className="font-display text-[15vw] md:text-[10vw] lg:text-[5.5vw]">{project.title}</h3>
@@ -102,7 +109,7 @@ function Featured({ project, index }: { project: Project; index: number }) {
             href={project.links.site}
             target="_blank"
             rel="noreferrer"
-            className="mt-8 inline-block bg-ink px-5 py-3 font-mono text-xs uppercase tracking-wider text-paper transition-colors hover:grain-bg hover:text-on-grain"
+            className="grain-bg mt-8 inline-block px-5 py-3 font-mono text-xs uppercase tracking-wider text-on-grain transition-colors hover:!bg-none hover:bg-ink hover:text-paper"
           >
             Voir le site ↗
           </a>
