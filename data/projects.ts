@@ -109,25 +109,6 @@ export const projects42: Project[] = [
     links: { github: "https://github.com/Nolhan-B/ft_transcendence" },
   },
   {
-    slug: "agent-smith",
-    title: "Agent Smith",
-    featured: true,
-    period: "Juil. 2026",
-    context: "42 — en binôme",
-    tagline: "Un agent IA qui raisonne, écrit du code, l'exécute et corrige ses erreurs.",
-    description:
-      "Framework d'agent autonome qui résout des problèmes de code en boucle Thought → Code → Observation. L'agent génère du Python, l'exécute dans une sandbox configurable et itère jusqu'à la solution. Évalué sur MBPP et sur SWE-bench (vrais bugs de dépôts GitHub, dans des conteneurs Docker).",
-    highlights: [
-      "Outils exposés via le Model Context Protocol (MCP)",
-      "Exécution sandboxée du code généré",
-      "Multi-fournisseurs LLM (Groq, OpenRouter, Gemini, OpenAI) avec rotation de clés",
-      "Rapport de benchmark sur MBPP et SWE-bench",
-    ],
-    stack: ["Python", "MCP", "LLM", "Docker", "uv"],
-    tags: ["ia", "backend"],
-    links: { github: "https://github.com/Nolhan-B/Agent-Smith" },
-  },
-  {
     slug: "the-answer-protocol",
     title: "The Answer Protocol",
     featured: true,
@@ -145,6 +126,25 @@ export const projects42: Project[] = [
     stack: ["Rust", "tokio", "Axum", "WebSocket", "TCP"],
     tags: ["systemes", "backend"],
     links: { github: "https://github.com/Nolhan-B/The-Answer-Protocol" },
+  },
+  {
+    slug: "agent-smith",
+    title: "Agent Smith",
+    featured: true,
+    period: "Juil. 2026",
+    context: "42 — en binôme",
+    tagline: "Un agent IA qui raisonne, écrit du code, l'exécute et corrige ses erreurs.",
+    description:
+      "Framework d'agent autonome qui résout des problèmes de code en boucle Thought → Code → Observation. L'agent génère du Python, l'exécute dans une sandbox configurable et itère jusqu'à la solution. Évalué sur MBPP et sur SWE-bench (vrais bugs de dépôts GitHub, dans des conteneurs Docker).",
+    highlights: [
+      "Outils exposés via le Model Context Protocol (MCP)",
+      "Exécution sandboxée du code généré",
+      "Multi-fournisseurs LLM (Groq, OpenRouter, Gemini, OpenAI) avec rotation de clés",
+      "Rapport de benchmark sur MBPP et SWE-bench",
+    ],
+    stack: ["Python", "MCP", "LLM", "Docker", "uv"],
+    tags: ["ia", "backend"],
+    links: { github: "https://github.com/Nolhan-B/Agent-Smith" },
   },
   {
     slug: "pac-man",

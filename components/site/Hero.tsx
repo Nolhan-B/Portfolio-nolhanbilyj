@@ -67,24 +67,24 @@ export default function Hero() {
             <Chars text="Nolhan" />
           </span>
           <span data-line="2" className="flex items-end justify-end gap-[0.06em]">
-            <span
-              data-photo
-              className="relative mb-[0.06em] mr-[0.04em] block aspect-square w-[0.72em] shrink-0 overflow-hidden rounded-full md:w-[0.8em]"
-            >
-              <Image
-                src={photo}
-                alt="Nolhan Bilyj"
-                fill
-                priority
-                sizes="(min-width: 768px) 16vw, 20vw"
-                className="object-cover object-[50%_45%] grayscale"
-              />
+            <span data-photo className="relative mb-[0.06em] mr-[0.06em] block w-[0.72em] shrink-0 md:w-[0.8em]">
+              {/* Halo flou et anneau en dégradé autour de la photo */}
+              <span aria-hidden className="grain-bg absolute inset-0 scale-[1.35] rounded-full opacity-60 blur-2xl" />
+              <span className="grain-bg relative block aspect-square rounded-full p-[0.035em]">
+                <span className="relative block h-full w-full overflow-hidden rounded-full">
+                  <Image
+                    src={photo}
+                    alt="Nolhan Bilyj"
+                    fill
+                    priority
+                    sizes="(min-width: 768px) 16vw, 20vw"
+                    className="object-cover object-[50%_45%] grayscale"
+                  />
+                </span>
+              </span>
             </span>
             <span className="line-mask">
               <Chars text="Bilyj" />
-            </span>
-            <span className="line-mask text-grain">
-              <Chars text="." />
             </span>
           </span>
         </h1>

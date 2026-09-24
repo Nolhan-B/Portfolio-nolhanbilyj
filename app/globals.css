@@ -18,6 +18,7 @@
     --g2: #f7b26b;
     --g3: #f5735a;
     --g4: #8ccbf2;
+    /* Touche de vert : environ 5 % du cycle, glissée au milieu du bleu ciel */
     --g5: #7fd99a;
     --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 
@@ -116,9 +117,12 @@
         var(--g1) 0,
         var(--g2) 7rem,
         var(--g3) 14rem,
-        var(--g4) 21rem,
-        var(--g5) 28rem,
-        var(--g1) 35rem
+        var(--g4) 20rem,
+        var(--g5) 21rem,
+        var(--g4) 22rem,
+        var(--g3) 28rem,
+        var(--g2) 35rem,
+        var(--g1) 42rem
       );
     background-size: 180px 180px, 160% 160%;
     background-blend-mode: soft-light, normal;
