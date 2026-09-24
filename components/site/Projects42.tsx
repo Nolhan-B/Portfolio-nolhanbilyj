@@ -4,6 +4,7 @@ import { useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { profile, projects42, type Project } from "@/data/projects";
+import Gallery from "@/components/site/Gallery";
 
 const tagLabels: Record<string, string> = {
   web: "Web",
@@ -52,6 +53,11 @@ function Row({ project, index, open, onToggle }: { project: Project; index: numb
       >
         <div className="overflow-hidden">
           <div className="grid gap-8 px-4 pb-10 pt-2 md:grid-cols-12 md:px-8 md:pb-14">
+            {project.images?.length ? (
+              <div className="md:col-span-8 md:col-start-2">
+                <Gallery project={project} sizes="(min-width: 768px) 70vw, 100vw" />
+              </div>
+            ) : null}
             <div className="md:col-span-5 md:col-start-2">
               <p className="mb-4 font-mono text-[11px] uppercase tracking-wider text-paper/60">{project.context}</p>
               <p className="font-display-wide text-3xl md:text-[2.6vw]">{project.tagline}</p>

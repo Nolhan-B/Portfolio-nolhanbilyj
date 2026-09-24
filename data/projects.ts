@@ -128,6 +128,7 @@ export const projects42: Project[] = [
     stack: ["Rust", "tokio", "Axum", "WebSocket", "TCP"],
     tags: ["systemes", "backend"],
     links: { github: "https://github.com/Nolhan-B/The-Answer-Protocol" },
+    images: ["/projects/tap-jeu.webp", "/projects/tap-combat.webp", "/projects/tap-carte.webp", "/projects/tap-connexion.webp"],
   },
   {
     slug: "agent-smith",
