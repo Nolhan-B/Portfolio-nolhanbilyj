@@ -336,7 +336,12 @@ export const projectsPro: Project[] = [
     ],
     stack: ["PHP", "Symfony", "Doctrine", "PHPUnit"],
     tags: ["backend", "web"],
-    images: ["/projects/kl-logistique.webp"],
+    images: [
+      "/projects/kl-dashboard.webp",
+      "/projects/kl-valorisation.webp",
+      "/projects/kl-scan.webp",
+      "/projects/kl-connexion.webp",
+    ],
   },
   {
     slug: "la-savoureuse",
