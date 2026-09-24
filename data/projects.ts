@@ -442,9 +442,10 @@ export const projectsPro: Project[] = [
     featured: false,
     period: "2025 — 2026",
     context: "Client — freelance",
-    tagline: "Traduction automatique du site par IA.",
-    description: "Implémentation à la demande du client d'un système de traduction par IA, avec sélecteur de langue.",
-    highlights: ["Traduction par IA", "Sélecteur de langue"],
+    tagline: "Traduction par IA des contenus écrits par les utilisateurs.",
+    description:
+      "Implémentation à la demande du client : des boutons de traduction qui traduisent par IA les textes saisis par les utilisateurs, dans la langue choisie par le lecteur.",
+    highlights: ["Traduction par IA du contenu utilisateur", "Bouton de traduction et choix de la langue"],
     stack: ["IA", "Web"],
     tags: ["web", "ia"],
   },
