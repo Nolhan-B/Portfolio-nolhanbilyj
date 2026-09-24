@@ -439,6 +439,12 @@ export const projectsPro: Project[] = [
     ],
     stack: ["Next.js", "TypeScript", "Drizzle", "PostgreSQL (Neon)", "Resend"],
     tags: ["web", "backend"],
+    images: [
+      "/projects/kashless-accueil.webp",
+      "/projects/kashless-dashboard.webp",
+      "/projects/kashless-caisse.webp",
+      "/projects/kashless-participants.webp",
+    ],
   },
   {
     slug: "publih-corteva",
