@@ -13,7 +13,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="fr" suppressHydrationWarning>
       <head>
-        {/* Aperçu des palettes : ?palette=memphis|synth|pop90|grain|acid|mono */}
+        {/* Aperçu des palettes : ?palette=sunset|ocean|duo|memphis|synth|pop90|acid|mono */}
         <script
           dangerouslySetInnerHTML={{
             __html: `try{var p=new URLSearchParams(location.search).get("palette");if(p&&/^[a-z0-9]+$/.test(p))document.documentElement.setAttribute("data-palette",p)}catch(e){}`,

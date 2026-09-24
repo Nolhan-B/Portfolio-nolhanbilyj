@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-// Dégradé arc-en-ciel granuleux animé (WebGL). Bandes concentriques déformées par du bruit,
+// Dégradé granuleux animé (WebGL). Bandes concentriques déformées par du bruit,
 // grain façon pellicule recalculé à chaque image.
 
 const vertex = `
@@ -31,23 +31,20 @@ float fbm(vec2 p) {
   return v;
 }
 
-// Rampe de couleurs : vert, cyan, bleu, rose, corail, orange, jaune
+// Rampe de 4 couleurs en aller-retour (pas de cassure entre la dernière et la première)
+uniform vec3 uC0;
+uniform vec3 uC1;
+uniform vec3 uC2;
+uniform vec3 uC3;
+
 vec3 ramp(float t) {
-  vec3 c0 = vec3(0.49, 0.86, 0.54);
-  vec3 c1 = vec3(0.62, 0.91, 0.97);
-  vec3 c2 = vec3(0.42, 0.72, 0.94);
-  vec3 c3 = vec3(0.96, 0.60, 0.71);
-  vec3 c4 = vec3(0.96, 0.45, 0.35);
-  vec3 c5 = vec3(0.97, 0.70, 0.42);
-  vec3 c6 = vec3(0.98, 0.84, 0.49);
-  t = fract(t) * 7.0;
-  if (t < 1.0) return mix(c0, c1, smoothstep(0.0, 1.0, t));
-  if (t < 2.0) return mix(c1, c2, smoothstep(1.0, 2.0, t));
-  if (t < 3.0) return mix(c2, c3, smoothstep(2.0, 3.0, t));
-  if (t < 4.0) return mix(c3, c4, smoothstep(3.0, 4.0, t));
-  if (t < 5.0) return mix(c4, c5, smoothstep(4.0, 5.0, t));
-  if (t < 6.0) return mix(c5, c6, smoothstep(5.0, 6.0, t));
-  return mix(c6, c0, smoothstep(6.0, 7.0, t));
+  t = fract(t) * 6.0;
+  if (t < 1.0) return mix(uC0, uC1, smoothstep(0.0, 1.0, t));
+  if (t < 2.0) return mix(uC1, uC2, smoothstep(1.0, 2.0, t));
+  if (t < 3.0) return mix(uC2, uC3, smoothstep(2.0, 3.0, t));
+  if (t < 4.0) return mix(uC3, uC2, smoothstep(3.0, 4.0, t));
+  if (t < 5.0) return mix(uC2, uC1, smoothstep(4.0, 5.0, t));
+  return mix(uC1, uC0, smoothstep(5.0, 6.0, t));
 }
 
 void main() {
@@ -105,6 +102,14 @@ export default function GrainGradient({ className }: { className?: string }) {
     const uRes = gl.getUniformLocation(prog, "uRes");
     const uTime = gl.getUniformLocation(prog, "uTime");
     const uMouse = gl.getUniformLocation(prog, "uMouse");
+
+    // Couleurs lues depuis la palette CSS (--g1 à --g4, en hexadécimal)
+    const css = getComputedStyle(document.documentElement);
+    ["uC0", "uC1", "uC2", "uC3"].forEach((name, i) => {
+      const hex = css.getPropertyValue(`--g${i + 1}`).trim() || "#ffffff";
+      const n = parseInt(hex.slice(1), 16);
+      gl.uniform3f(gl.getUniformLocation(prog, name), ((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255);
+    });
 
     // Rendu en résolution réduite : le grain et le flou n'ont pas besoin de plus
     const scale = 0.6;
