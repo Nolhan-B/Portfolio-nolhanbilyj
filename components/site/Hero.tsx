@@ -107,6 +107,14 @@ export default function Hero() {
               42 Mulhouse et freelance depuis 2025, je cherche une alternance en développement full-stack, backend ou
               IA.
             </p>
+            <p className="mt-4 flex flex-wrap gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-wider md:text-xs">
+              <span className="text-grain grain-tight font-bold">Alternance</span>
+              <span>Dès {profile.alternance.start.toLowerCase()}</span>
+              <span className="opacity-40">/</span>
+              <span>3 sem. entreprise · 1 sem. école</span>
+              <span className="opacity-40">/</span>
+              <span>{profile.alternance.duration}</span>
+            </p>
             <div className="mt-6 flex flex-wrap gap-3 font-mono text-xs uppercase tracking-wider">
               <a href="#projets-42" className="bg-ink px-5 py-3 text-paper transition-colors hover:grain-bg hover:text-on-grain">
                 Voir les projets ↓

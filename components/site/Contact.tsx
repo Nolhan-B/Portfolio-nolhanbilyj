@@ -25,6 +25,19 @@ export default function Contact() {
           <TitleChars text="Parlons-en." className="text-grain" />
         </h2>
 
+        <dl data-reveal className="mt-12 grid gap-px border border-ink bg-ink sm:grid-cols-3 md:mt-16">
+          {[
+            ["Début", profile.alternance.start],
+            ["Rythme", profile.alternance.rhythm],
+            ["Durée", profile.alternance.duration],
+          ].map(([term, value], i) => (
+            <div key={term} className={`p-5 ${i === 0 ? "grain-bg text-on-grain" : "bg-paper"}`}>
+              <dt className="font-mono text-[11px] uppercase tracking-wider opacity-60">{term}</dt>
+              <dd className="font-display-wide mt-2 text-lg md:text-xl">{value}</dd>
+            </div>
+          ))}
+        </dl>
+
         <div className="mt-12 grid gap-12 md:mt-16 lg:grid-cols-12 lg:gap-10">
           <div data-reveal className="lg:col-span-5">
             <p className="mb-3 font-mono text-[11px] uppercase tracking-wider opacity-60">Par email</p>

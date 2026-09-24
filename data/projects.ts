@@ -36,6 +36,11 @@ export const profile = {
   role: "Développeur logiciel",
   focus: ["Full-stack", "Backend", "IA"],
   status: "En recherche d'alternance",
+  alternance: {
+    start: "Janvier 2027",
+    rhythm: "3 semaines en entreprise / 1 semaine à l'école",
+    duration: "2 ans",
+  },
   location: "Belfort / Mulhouse",
   email: "nolhanbil@gmail.com",
   phone: "06 69 45 09 03",
@@ -167,6 +172,7 @@ export const projects42: Project[] = [
     stack: ["Python", "Pygame", "mypy"],
     tags: ["systemes"],
     links: { github: "https://github.com/Nolhan-B/Pac-man-42" },
+    images: ["/projects/pacman-jeu.webp", "/projects/pacman-menu.webp", "/projects/pacman-scores.webp", "/projects/pacman-regles.webp"],
   },
   {
     slug: "rag-against-the-machine",
