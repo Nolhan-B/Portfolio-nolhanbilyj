@@ -27,7 +27,7 @@ const config: Config = {
         ink: "hsl(var(--ink))",
         accent: {
           DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--ink))",
+          foreground: "hsl(var(--accent-fg))",
         },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

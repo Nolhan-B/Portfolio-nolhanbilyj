@@ -5,7 +5,7 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { profile } from "@/data/projects";
-import photo from "@/public/nbilyj.jpg";
+import photo from "@/public/nolhan.jpg";
 
 function Chars({ text }: { text: string }) {
   return (
@@ -76,7 +76,7 @@ export default function Hero() {
                 fill
                 priority
                 sizes="30vw"
-                className="object-cover object-[60%_30%] grayscale"
+                className="object-cover object-[50%_42%] grayscale"
               />
             </span>
             <span className="line-mask">
@@ -107,7 +107,7 @@ export default function Hero() {
               IA.
             </p>
             <div className="mt-6 flex flex-wrap gap-3 font-mono text-xs uppercase tracking-wider">
-              <a href="#projets-42" className="bg-ink px-5 py-3 text-paper transition-colors hover:bg-accent hover:text-ink">
+              <a href="#projets-42" className="bg-ink px-5 py-3 text-paper transition-colors hover:bg-accent hover:text-accent-foreground">
                 Voir les projets ↓
               </a>
               <a

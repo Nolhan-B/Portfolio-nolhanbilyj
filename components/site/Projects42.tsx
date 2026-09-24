@@ -25,19 +25,19 @@ function Row({ project, index, open, onToggle }: { project: Project; index: numb
         className="group relative grid w-full grid-cols-[2.5rem_1fr] items-center gap-2 overflow-hidden px-4 py-4 text-left md:grid-cols-[4rem_1fr_auto] md:px-8 md:py-5"
       >
         <span className="absolute inset-0 origin-bottom scale-y-0 bg-accent transition-transform duration-500 ease-expo group-hover:scale-y-100" />
-        <span className="relative font-mono text-xs transition-colors group-hover:text-ink">{pad(index + 1)}</span>
+        <span className="relative font-mono text-xs transition-colors group-hover:text-accent-foreground">{pad(index + 1)}</span>
         <span className="relative flex flex-wrap items-center gap-x-4 gap-y-1">
-          <span className="font-display text-[12vw] transition-[transform,color] duration-500 ease-expo group-hover:translate-x-3 group-hover:text-ink md:text-[7vw]">
+          <span className="font-display text-[12vw] transition-[transform,color] duration-500 ease-expo group-hover:translate-x-3 group-hover:text-accent-foreground md:text-[7vw]">
             {project.title}
           </span>
           {project.status === "en-cours" && (
-            <span className="flex items-center gap-2 rounded-full bg-accent px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-ink group-hover:bg-ink group-hover:text-accent">
+            <span className="flex items-center gap-2 rounded-full bg-accent px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-accent-foreground group-hover:bg-accent-foreground group-hover:text-accent">
               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-current" />
               En cours
             </span>
           )}
         </span>
-        <span className="relative hidden text-right font-mono text-xs uppercase tracking-wider transition-colors group-hover:text-ink md:block">
+        <span className="relative hidden text-right font-mono text-xs uppercase tracking-wider transition-colors group-hover:text-accent-foreground md:block">
           <span className="block">{project.tags.map((t) => tagLabels[t]).join(" · ")}</span>
           <span className="block opacity-60">{project.period}</span>
         </span>
@@ -75,7 +75,7 @@ function Row({ project, index, open, onToggle }: { project: Project; index: numb
                   href={project.links.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-8 inline-block bg-paper px-5 py-3 font-mono text-xs uppercase tracking-wider text-ink transition-colors hover:bg-accent"
+                  className="mt-8 inline-block bg-paper px-5 py-3 font-mono text-xs uppercase tracking-wider text-ink transition-colors hover:bg-accent hover:text-accent-foreground"
                 >
                   Voir sur GitHub ↗
                 </a>
@@ -120,7 +120,7 @@ export default function Projects42() {
   }, []);
 
   return (
-    <section ref={root} id="projets-42" className="bg-ink pb-24 pt-24 text-paper md:pt-32">
+    <section ref={root} id="projets-42" className="on-ink bg-ink pb-24 pt-24 text-paper md:pt-32">
       <div className="mb-12 grid gap-6 px-4 md:mb-20 md:grid-cols-12 md:px-8">
         <p className="font-mono text-[11px] uppercase tracking-wider md:col-span-12 md:text-xs">
           (02) Tronc commun — École 42 Mulhouse
