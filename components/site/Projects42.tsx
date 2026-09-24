@@ -50,7 +50,7 @@ function Row({ project, index, open, onToggle }: { project: Project; index: numb
         <div className="overflow-hidden">
           <div className="grid gap-8 px-4 pb-10 pt-2 md:grid-cols-12 md:px-8 md:pb-14">
             <div className="md:col-span-5 md:col-start-2">
-              <p className="mb-4 font-mono text-[11px] uppercase tracking-wider text-accent">{project.context}</p>
+              <p className="mb-4 font-mono text-[11px] uppercase tracking-wider text-paper/60">{project.context}</p>
               <p className="font-display-wide text-3xl md:text-[2.6vw]">{project.tagline}</p>
             </div>
             <div className="md:col-span-5 md:col-start-8">
@@ -123,7 +123,7 @@ export default function Projects42() {
     <section ref={root} id="projets-42" className="on-ink bg-ink pb-24 pt-24 text-paper md:pt-32">
       <div className="mb-12 grid gap-6 px-4 md:mb-20 md:grid-cols-12 md:px-8">
         <p className="font-mono text-[11px] uppercase tracking-wider md:col-span-12 md:text-xs">
-          (03) Tronc commun — École 42 Mulhouse
+          (03) Tronc commun 42 Next — École 42 Mulhouse
         </p>
         <h2
           data-title
@@ -147,11 +147,8 @@ export default function Projects42() {
         </h2>
         <div className="md:col-span-5 md:col-start-8">
           <p className="text-lg leading-snug text-paper/80 md:text-xl">
-            Pas de cours, pas de prof : des projets, des pairs et des soutenances. C&apos;est là que j&apos;ai appris
-            les systèmes, le réseau, la concurrence et l&apos;IA.
-          </p>
-          <p className="mt-4 font-mono text-xs uppercase tracking-wider text-paper/60">
-            ({pad(featured.length)}) mis en avant — ({pad(others.length)}) autres
+            Pas de cours, pas de prof : du peer learning, de la peer evaluation et des projets à rendre.
+            C&apos;est là que j&apos;ai appris les systèmes, le réseau, la concurrence et l&apos;IA.
           </p>
         </div>
       </div>
@@ -181,7 +178,7 @@ export default function Projects42() {
                 <div>
                   <h3 className="font-display mb-3 text-5xl">{p.title}</h3>
                   <p className="text-sm leading-snug opacity-80">{p.tagline}</p>
-                  <p className="mt-3 font-mono text-[11px] uppercase tracking-wider text-accent">{p.stack.join(" · ")}</p>
+                  <p className="mt-3 font-mono text-[11px] uppercase tracking-wider opacity-60">{p.stack.join(" · ")}</p>
                 </div>
               </Tag>
             );

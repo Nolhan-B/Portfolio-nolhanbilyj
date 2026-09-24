@@ -129,7 +129,7 @@ export default function Hero() {
             {stack.map((s) => (
               <span key={s} className="font-display flex items-center whitespace-nowrap text-[11vw] md:text-[5vw]">
                 <span className="px-[0.3em]">{s}</span>
-                <span className="text-grain">*</span>
+                <span className="text-grain grain-tight">*</span>
               </span>
             ))}
           </div>

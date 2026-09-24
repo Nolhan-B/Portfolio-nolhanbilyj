@@ -10,13 +10,14 @@ const pad = (n: number) => String(n).padStart(2, "0");
 function Visual({ project, index }: { project: Project; index: number }) {
   if (project.image) {
     return (
-      <div className="group/img relative aspect-[16/10] overflow-hidden border border-ink">
+      <div className="group/img overflow-hidden border border-ink">
         <Image
           src={project.image}
-          alt={`Capture du site ${project.title}`}
-          fill
-          sizes="(min-width: 768px) 55vw, 100vw"
-          className="object-cover object-top transition-transform duration-700 ease-expo group-hover/img:scale-105"
+          alt={`Capture de ${project.title}`}
+          width={1600}
+          height={1000}
+          sizes="(min-width: 1024px) 55vw, 100vw"
+          className="h-auto w-full transition-transform duration-700 ease-expo group-hover/img:scale-[1.03]"
         />
       </div>
     );
@@ -45,7 +46,7 @@ function Featured({ project, index }: { project: Project; index: number }) {
           <span>{pad(index + 1)}</span>
           <span className="opacity-60">{project.period}</span>
         </div>
-        <p className="mb-3 font-mono text-[11px] uppercase tracking-wider text-accent">{project.context}</p>
+        <p className="mb-3 font-mono text-[11px] uppercase tracking-wider opacity-60">{project.context}</p>
         <h3 className="font-display text-[15vw] md:text-[10vw] lg:text-[5.5vw]">{project.title}</h3>
         <p className="font-display-wide mt-4 text-xl md:text-2xl">{project.tagline}</p>
         <p className="mt-4 leading-relaxed opacity-80">{project.description}</p>
@@ -87,7 +88,7 @@ export default function ProjectsPro() {
 
   return (
     <section ref={root} id="realisations" className="px-4 pb-24 pt-24 md:px-8 md:pb-32 md:pt-32">
-      <p className="mb-6 font-mono text-[11px] uppercase tracking-wider md:text-xs">(04) Clients, freelance & projets perso</p>
+      <p className="mb-10 font-mono text-[11px] uppercase tracking-wider md:mb-14 md:text-xs">(04) Clients, freelance & projets perso</p>
       <div className="mb-8 grid gap-6 md:mb-12 md:grid-cols-12">
         <h2
           data-title
@@ -98,7 +99,7 @@ export default function ProjectsPro() {
           <TitleChars text="tions" className="text-grain" />
         </h2>
         <p data-reveal className="text-lg leading-snug opacity-80 md:col-span-5 md:col-start-8 md:text-xl">
-          Des projets en production, pour de vrais utilisateurs : un logiciel de caisse, un e-commerce, le site de mon
+          Des projets en production, pour de vrais utilisateurs : un logiciel de gestion de stock, un e-commerce, le site de mon
           club, des sites vitrines.
         </p>
       </div>

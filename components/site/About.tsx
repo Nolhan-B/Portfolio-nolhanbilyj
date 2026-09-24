@@ -28,16 +28,26 @@ export default function About() {
       <div className="grid gap-16 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <p data-reveal className="text-xl font-medium leading-snug md:text-2xl">
-            J&apos;ai {age(profile.birthDate)} ans et je vis près de Belfort. J&apos;ai écrit mes premières lignes de code
-            en 2023, en créant le site VTC de mon père.
+            J&apos;ai {age(profile.birthDate)} ans, je vis près de Belfort, et je code depuis le milieu de ma première
+            année après le bac.
           </p>
           <p data-reveal className="mt-6 text-base leading-relaxed opacity-80 md:text-lg">
-            Depuis, un stage chez Qizuna m&apos;a appris à penser l&apos;architecture (DDD, CQRS, TDD), des clients
-            m&apos;ont fait confiance en freelance, et l&apos;école 42 Mulhouse me fait creuser les fondamentaux : C,
-            Rust, réseau, concurrence, IA.
+            Avant ça, deux fausses pistes la même année : STAPS, où tout passait par le par cœur sans vraie pratique,
+            puis un BUT MMI rejoint en février, avec trop de matières et aucun fil conducteur. C&apos;est en créant le
+            site VTC de mon père que j&apos;ai trouvé ce qui me plaisait vraiment.
           </p>
           <p data-reveal className="mt-6 text-base leading-relaxed opacity-80 md:text-lg">
-            En dehors du code : tennis de table en compétition, musculation, powerlifting et vélo.
+            Une première école d&apos;informatique m&apos;a ensuite lancé dans le concret, avec un stage où j&apos;ai
+            appris à penser l&apos;architecture (DDD, CQRS, TDD). Aujourd&apos;hui, je suis à 42 Mulhouse, où
+            j&apos;avance plus vite que le reste de ma promotion, et je continue le freelance à côté.
+          </p>
+          <p data-reveal className="mt-6 text-base leading-relaxed opacity-80 md:text-lg">
+            À 42, je creuse les fondamentaux : algorithmique et structures de données en C, programmation réseau et
+            asynchrone en Rust, concurrence avec threads et mutex, et conception de systèmes d&apos;IA (agents, RAG,
+            LLM).
+          </p>
+          <p data-reveal className="mt-6 text-base leading-relaxed opacity-80 md:text-lg">
+            En dehors du code : tennis de table en compétition (classé 12), musculation, powerlifting et vélo.
           </p>
           <div data-reveal className="mt-8 flex flex-wrap gap-2">
             {profile.languages.map((l) => (

@@ -58,13 +58,13 @@ export const skills = {
 export const experiences: Experience[] = [
   {
     period: "2025 — aujourd'hui",
-    title: "Étudiant — Cursus 42",
+    title: "Étudiant — 42 Next",
     place: "École 42 Mulhouse",
     description:
-      "Apprentissage par projets et en autonomie : algorithmique en C, Rust et Python, programmation concurrente, systèmes IA (agents, RAG, LLM), Docker, réseaux TCP/IP.",
+      "Tronc commun en peer learning et peer evaluation, sans cours ni professeurs. Algorithmique en C, Rust et Python, concurrence, systèmes d'IA, Docker, réseaux TCP/IP. Le plus avancé de ma promotion.",
   },
   {
-    period: "2025 — 2026",
+    period: "2025 — aujourd'hui",
     title: "Développeur web freelance",
     place: "Indépendant",
     description: "Applications métier et sites pour des clients : KL Logistique, Publih-Corteva, Inmemorium, M Studio Print, Sanomax Solution.",
@@ -85,7 +85,7 @@ export const experiences: Experience[] = [
     place: "La Savoureuse — Châtenois-les-Forges",
     description: "Conception, développement et maintenance du site du club multi-sections.",
   },
-  { period: "2024 — 2025", title: "Première année d'informatique", place: "UHA 4.0 — Mulhouse", minor: true },
+  { period: "2024 — 2025", title: "Première année d'informatique", place: "Mulhouse", minor: true },
   { period: "2023", title: "Baccalauréat général (Maths, LLCER Anglais)", place: "Lycée Condorcet — Belfort", minor: true },
 ];
 
@@ -324,18 +324,19 @@ export const projectsPro: Project[] = [
     period: "2025 — 2026",
     status: "production",
     context: "Client — freelance",
-    tagline: "Un logiciel de caisse et de stock, conçu de A à Z en architecture propre.",
+    tagline: "Un logiciel de gestion de stock, conçu de A à Z en architecture propre.",
     description:
-      "Application de gestion de caisse développée intégralement pour KL Logistique : ventes, gestion de plusieurs stocks et inventaires réalisés au scanner de codes-barres sur Android.",
+      "Application de gestion de stock développée intégralement pour KL Logistique : sessions d'inventaire par emplacement, suivi des opérateurs, valorisation financière du stock et import du catalogue.",
     highlights: [
-      "DDD, CQRS et Clean Architecture",
-      "Pattern repository en trois couches",
-      "Gestion multi-stock",
+      "Gestion multi-stock et sessions d'inventaire suivies par statut",
+      "Valorisation du stock par emplacement et par article",
       "Scan de codes-barres sur Android pour les inventaires",
+      "DDD, CQRS, Clean Architecture et pattern repository en trois couches",
       "Développement piloté par les tests (BDD / TDD)",
     ],
     stack: ["PHP", "Symfony", "Doctrine", "PHPUnit"],
     tags: ["backend", "web"],
+    image: "/projects/kl-logistique.webp",
   },
   {
     slug: "la-savoureuse",

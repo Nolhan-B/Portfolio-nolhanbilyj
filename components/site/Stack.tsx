@@ -18,7 +18,7 @@ export default function Stack() {
       <div className="grid gap-px bg-paper/20 sm:grid-cols-2 lg:grid-cols-5">
         {Object.entries(skills).map(([category, items]) => (
           <div key={category} data-reveal className="bg-ink p-5 md:p-6">
-            <p className="mb-5 font-mono text-[11px] uppercase tracking-wider text-accent">{category}</p>
+            <p className="mb-5 font-mono text-[11px] uppercase tracking-wider text-paper/60">{category}</p>
             <ul className="space-y-1">
               {items.map((item) => (
                 <li key={item} className="font-display-wide text-lg transition-colors hover:text-grain md:text-xl">
