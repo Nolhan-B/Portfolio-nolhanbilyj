@@ -67,7 +67,7 @@ export const experiences: Experience[] = [
     period: "2025 — aujourd'hui",
     title: "Développeur web freelance",
     place: "Indépendant",
-    description: "Applications métier et sites pour des clients : KL Logistique, Publih-Corteva, Inmemorium, M Studio Print, Sanomax Solution.",
+    description: "Applications métier et sites pour des clients : KL Studio Logistiques, Publih-Corteva, Inmemorium, M Studio Print, Sanomax Solution.",
   },
   {
     period: "Mars — Juil. 2025",
@@ -319,14 +319,14 @@ export const projects42: Project[] = [
 export const projectsPro: Project[] = [
   {
     slug: "kl-logistique",
-    title: "KL Logistique",
+    title: "KL Studio Logistiques",
     featured: true,
     period: "2025 — 2026",
     status: "production",
     context: "Client — freelance",
     tagline: "Un logiciel de gestion de stock, conçu de A à Z en architecture propre.",
     description:
-      "Application de gestion de stock développée intégralement pour KL Logistique : sessions d'inventaire par emplacement, suivi des opérateurs, valorisation financière du stock et import du catalogue.",
+      "Application de gestion de stock développée intégralement pour KL Studio Logistiques : sessions d'inventaire par emplacement, suivi des opérateurs, valorisation financière du stock et import du catalogue.",
     highlights: [
       "Gestion multi-stock et sessions d'inventaire suivies par statut",
       "Valorisation du stock par emplacement et par article",
