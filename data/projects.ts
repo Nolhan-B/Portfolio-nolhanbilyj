@@ -358,6 +358,12 @@ export const projectsPro: Project[] = [
     stack: ["React", "TypeScript", "Supabase", "PostgreSQL", "Tailwind", "Resend", "Vercel"],
     tags: ["web", "backend"],
     links: { site: "https://www.la-savoureuse-clf.com" },
+    images: [
+      "/projects/la-savoureuse-1.webp",
+      "/projects/la-savoureuse-2.webp",
+      "/projects/la-savoureuse-3.webp",
+      "/projects/la-savoureuse-4.webp",
+    ],
   },
   {
     slug: "m-studio-print",

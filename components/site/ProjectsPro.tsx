@@ -7,26 +7,25 @@ import { TitleChars, useReveal } from "@/components/site/useReveal";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-function Gallery({ project }: { project: Project }) {
+function Gallery({ project, index }: { project: Project; index: number }) {
   const images = project.images!;
   const [active, setActive] = useState(0);
   return (
     <div>
-      {/* Cadre fixe : la capture est affichée entière, les bords sont comblés par la même image floutée */}
-      <div className="group/img relative aspect-[16/10] overflow-hidden border border-ink bg-ink">
+      {/* La capture est posée sur le dégradé animé, affichée entière avec une ombre */}
+      <div className="grain-bg group/img relative aspect-[16/10] overflow-hidden border border-ink" style={{ animationDelay: `${-index * 3}s` }}>
         {images.map((src, i) => (
           <div
             key={src}
-            className={`absolute inset-0 transition-opacity duration-500 ${i === active ? "opacity-100" : "opacity-0"}`}
+            className={`absolute inset-[5%] transition-opacity duration-500 ${i === active ? "opacity-100" : "opacity-0"}`}
             aria-hidden={i !== active}
           >
-            <Image src={src} alt="" fill sizes="10vw" className="scale-110 object-cover opacity-60 blur-2xl" />
             <Image
               src={src}
               alt={`Capture ${i + 1} de ${project.title}`}
               fill
-              sizes="(min-width: 1024px) 55vw, 100vw"
-              className="object-contain transition-transform duration-700 ease-expo group-hover/img:scale-[1.02]"
+              sizes="(min-width: 1024px) 50vw, 90vw"
+              className="object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,0.35)] transition-transform duration-700 ease-expo group-hover/img:scale-[1.02]"
             />
           </div>
         ))}
@@ -53,7 +52,7 @@ function Gallery({ project }: { project: Project }) {
 }
 
 function Visual({ project, index }: { project: Project; index: number }) {
-  if (project.images?.length) return <Gallery project={project} />;
+  if (project.images?.length) return <Gallery project={project} index={index} />;
 
   // Pas de capture (projet privé ou chez le client) : une affiche typographique sur le dégradé
   return (
