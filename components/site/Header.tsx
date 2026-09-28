@@ -1,20 +1,25 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { profile } from "@/data/projects";
 import ThemeToggle from "@/components/site/ThemeToggle";
+import LangToggle from "@/components/site/LangToggle";
+import { useLang } from "@/lib/i18n";
+import type { UI } from "@/data/ui";
 
-const links = [
-  { href: "#parcours", label: "Parcours" },
-  { href: "#projets-42", label: "Projets 42" },
-  { href: "#realisations", label: "Réalisations" },
-  { href: "#stack", label: "Stack" },
-  { href: "#contact", label: "Contact" },
+const navLinks = (t: UI) => [
+  { href: "#parcours", label: t.nav.about },
+  { href: "#projets-42", label: t.nav.projects42 },
+  { href: "#realisations", label: t.nav.work },
+  { href: "#stack", label: t.nav.stack },
+  { href: "#contact", label: t.nav.contact },
 ];
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
 function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const { t, content } = useLang();
+  const profile = content.profile;
+  const links = navLinks(t);
   // Fermeture à la touche Échap
   useEffect(() => {
     if (!open) return;
@@ -65,10 +70,10 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
           GitHub ↗
         </a>
         <a href={profile.cv} target="_blank" rel="noreferrer" tabIndex={open ? 0 : -1} className="bg-ink p-4">
-          CV (PDF) ↗
+          {t.nav.cv} ↗
         </a>
         <a href={`mailto:${profile.email}`} tabIndex={open ? 0 : -1} className="grain-bg p-4 text-on-grain">
-          Me contacter ↗
+          {t.nav.contactMe} ↗
         </a>
       </div>
     </div>
@@ -77,6 +82,9 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const { t, content } = useLang();
+  const profile = content.profile;
+  const links = navLinks(t);
 
   // Bloque le défilement de la page quand le menu est ouvert
   useEffect(() => {
@@ -98,7 +106,8 @@ export default function Header() {
               </a>
             ))}
           </nav>
-          <div className="flex items-center gap-5 md:gap-8">
+          <div className="flex items-center gap-4 md:gap-8">
+            <LangToggle />
             <ThemeToggle />
             <a href={`mailto:${profile.email}`} className="hidden items-center gap-2 md:flex">
               <span className="relative flex h-2 w-2">
@@ -113,7 +122,7 @@ export default function Header() {
               aria-controls="menu-mobile"
               className="flex items-center gap-2 uppercase md:hidden"
             >
-              {open ? "Fermer" : "Menu"}
+              {open ? t.nav.close : t.nav.menu}
               <span aria-hidden className="relative block h-2.5 w-4">
                 <span
                   className={`absolute left-0 top-0 h-px w-full bg-white transition-transform duration-500 ${

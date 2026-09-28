@@ -4,7 +4,7 @@ import { useLayoutEffect, useRef } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { profile } from "@/data/projects";
+import { useLang } from "@/lib/i18n";
 import photo from "@/public/nolhan.jpg";
 
 function Chars({ text }: { text: string }) {
@@ -23,6 +23,8 @@ const stack = ["TypeScript", "Symfony", "React", "Rust", "Python", "Docker", "Po
 
 export default function Hero() {
   const root = useRef<HTMLElement>(null);
+  const { t, content } = useLang();
+  const profile = content.profile;
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -58,8 +60,8 @@ export default function Hero() {
         <div data-fade className="grid grid-cols-2 gap-4 font-mono text-[11px] uppercase tracking-wider md:grid-cols-4 md:text-xs">
           <span>(Portfolio — 2026)</span>
           <span className="text-right md:text-left">{profile.location}, FR</span>
-          <span className="hidden md:block">Étudiant à 42 Mulhouse</span>
-          <span className="hidden text-right md:block">Scroll ↓</span>
+          <span className="hidden md:block">{t.hero.student}</span>
+          <span className="hidden text-right md:block">{t.hero.scroll}</span>
         </div>
 
         <h1 className="font-display my-8 text-[25vw] md:my-0 md:text-[19.5vw]" aria-label={profile.name}>
@@ -102,29 +104,27 @@ export default function Hero() {
             </p>
           </div>
           <div data-fade className="md:col-span-5 md:col-start-8">
-            <p className="text-lg font-medium leading-snug md:text-xl">
-              Je conçois des applications de bout en bout, du modèle métier jusqu&apos;à l&apos;interface. Étudiant à
-              42 Mulhouse et freelance depuis 2025, je cherche une alternance en développement full-stack, backend ou
-              IA.
-            </p>
+            <p className="text-lg font-medium leading-snug md:text-xl">{t.hero.intro}</p>
             <p className="mt-4 flex flex-wrap gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-wider md:text-xs">
-              <span className="text-grain grain-tight font-bold">Alternance</span>
-              <span>Dès {profile.alternance.start.toLowerCase()}</span>
+              <span className="text-grain grain-tight font-bold">{t.hero.alternance}</span>
+              <span>
+                {t.hero.from} {profile.alternance.start}
+              </span>
               <span className="opacity-40">/</span>
-              <span>3 sem. entreprise · 1 sem. école</span>
+              <span>{t.hero.rhythmShort}</span>
               <span className="opacity-40">/</span>
               <span>{profile.alternance.duration}</span>
             </p>
             <div className="mt-6 flex flex-wrap gap-3 font-mono text-xs uppercase tracking-wider">
               <a href="#projets-42" className="bg-ink px-5 py-3 text-paper transition-colors hover:grain-bg hover:text-on-grain">
-                Voir les projets ↓
+                {t.hero.seeProjects}
               </a>
               <a
                 href={profile.cv}
                 target="_blank"
                 className="border border-ink px-5 py-3 transition-colors hover:bg-ink hover:text-paper"
               >
-                CV (PDF) ↗
+                {t.hero.cv}
               </a>
               <a
                 href={profile.linkedin}

@@ -1,23 +1,14 @@
-import Header from "@/components/site/Header";
-import Hero from "@/components/site/Hero";
-import About from "@/components/site/About";
-import Projects42 from "@/components/site/Projects42";
-import ProjectsPro from "@/components/site/ProjectsPro";
-import Stack from "@/components/site/Stack";
-import Contact from "@/components/site/Contact";
+import type { Metadata } from "next";
+import Site from "@/components/site/Site";
+import { ui } from "@/data/ui";
+
+export const metadata: Metadata = {
+  title: ui.fr.meta.title,
+  description: ui.fr.meta.description,
+  alternates: { canonical: "/", languages: { fr: "/", en: "/en", "x-default": "/" } },
+  openGraph: { title: ui.fr.meta.title, description: ui.fr.meta.description, locale: "fr_FR", alternateLocale: "en_US", type: "website", url: "/" },
+};
 
 export default function Home() {
-  return (
-    <>
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <Projects42 />
-        <ProjectsPro />
-        <Stack />
-        <Contact />
-      </main>
-    </>
-  );
+  return <Site lang="fr" />;
 }

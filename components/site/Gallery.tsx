@@ -3,10 +3,12 @@
 import { useState } from "react";
 import Image from "next/image";
 import type { Project } from "@/data/projects";
+import { useLang } from "@/lib/i18n";
 
 export default function Gallery({ project, sizes = "(min-width: 1024px) 55vw, 100vw" }: { project: Project; sizes?: string }) {
   const images = project.images!;
   const [active, setActive] = useState(0);
+  const { t } = useLang();
   return (
     <div>
       {/* Cadre fixe : la capture est affichée entière, les bords sont comblés par la même image floutée */}
@@ -20,7 +22,7 @@ export default function Gallery({ project, sizes = "(min-width: 1024px) 55vw, 10
             <Image src={src} alt="" fill sizes="10vw" className="scale-110 object-cover opacity-60 blur-2xl" />
             <Image
               src={src}
-              alt={`Capture ${i + 1} de ${project.title}`}
+              alt={t.gallery.screenshot(i + 1, project.title)}
               fill
               sizes={sizes}
               className="object-contain transition-transform duration-700 ease-expo group-hover/img:scale-[1.02]"
@@ -34,9 +36,9 @@ export default function Gallery({ project, sizes = "(min-width: 1024px) 55vw, 10
             <button
               key={src}
               onClick={() => setActive(i)}
-              aria-label={`Afficher la capture ${i + 1} de ${project.title}`}
+              aria-label={t.gallery.show(i + 1, project.title)}
               aria-pressed={i === active}
-              className={`relative h-14 w-20 overflow-hidden transition-opacity md:h-16 md:w-24 ${
+              className={`relative aspect-[10/7] w-20 min-w-0 shrink overflow-hidden transition-opacity md:w-24 ${
                 i === active ? "grain-bg p-[3px] opacity-100" : "border border-current opacity-40 hover:opacity-100"
               }`}
             >

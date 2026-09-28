@@ -38,7 +38,7 @@ export const profile = {
   status: "En recherche d'alternance",
   alternance: {
     start: "Janvier 2027",
-    rhythm: "3 semaines en entreprise / 1 semaine à l'école",
+    rhythm: "3\u00a0semaines en entreprise\u00a0/ 1\u00a0semaine à l'école",
     duration: "2 ans",
   },
   location: "Belfort / Mulhouse",

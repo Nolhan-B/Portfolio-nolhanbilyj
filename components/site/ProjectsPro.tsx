@@ -2,8 +2,9 @@
 
 import { useRef } from "react";
 import Gallery from "@/components/site/Gallery";
-import { projectsPro, type Project } from "@/data/projects";
-import { TitleChars, useReveal } from "@/components/site/useReveal";
+import type { Project } from "@/data/projects";
+import { TitleParts, useReveal } from "@/components/site/useReveal";
+import { useLang } from "@/lib/i18n";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
@@ -24,6 +25,7 @@ function Visual({ project, index }: { project: Project; index: number }) {
 
 function Featured({ project, index }: { project: Project; index: number }) {
   const flip = index % 2 === 1;
+  const { t } = useLang();
   return (
     <article data-reveal className="relative grid grid-cols-1 items-center gap-8 py-12 lg:grid-cols-12 lg:gap-10 md:py-20">
       {/* Filet en dégradé animé en haut de chaque projet */}
@@ -64,7 +66,7 @@ function Featured({ project, index }: { project: Project; index: number }) {
             rel="noreferrer"
             className="grain-bg mt-8 inline-block px-5 py-3 font-mono text-xs uppercase tracking-wider text-on-grain transition-colors hover:!bg-none hover:bg-ink hover:text-paper"
           >
-            Voir le site ↗
+            {t.work.visit}
           </a>
         )}
       </div>
@@ -75,24 +77,26 @@ function Featured({ project, index }: { project: Project; index: number }) {
 export default function ProjectsPro() {
   const root = useRef<HTMLElement>(null);
   useReveal(root);
+  const { t, content } = useLang();
+  const projectsPro = content.projectsPro;
   const featured = projectsPro.filter((p) => p.featured);
   const others = projectsPro.filter((p) => !p.featured);
 
   return (
     <section ref={root} id="realisations" className="px-4 pb-24 pt-24 md:px-8 md:pb-32 md:pt-32">
-      <p className="mb-10 font-mono text-[11px] uppercase tracking-wider md:mb-14 md:text-xs">(04) Clients, freelance & projets perso</p>
+      <p className="mb-10 font-mono text-[11px] uppercase tracking-wider md:mb-14 md:text-xs">{t.work.label}</p>
       <div className="mb-8 grid gap-6 md:mb-12 md:grid-cols-12">
         <h2
           data-title
-          className="font-display flex flex-wrap items-end text-[18vw] md:col-span-12 md:text-[13vw]"
-          aria-label="Réalisations"
+          className={`font-display flex flex-wrap items-end text-[18vw] md:col-span-12 md:text-[13vw] ${
+            t.work.titleJoined ? "" : "gap-x-[0.2em]"
+          }`}
+          aria-label={t.work.title.map((p) => p.text).join(t.work.titleJoined ? "" : " ")}
         >
-          <TitleChars text="Réalisa" />
-          <TitleChars text="tions" className="text-grain" />
+          <TitleParts parts={t.work.title} />
         </h2>
         <p data-reveal className="text-lg leading-snug opacity-80 md:col-span-5 md:col-start-8 md:text-xl">
-          Des projets en production, pour de vrais utilisateurs : un logiciel de gestion de stock, un e-commerce, le site de mon
-          club, des sites vitrines.
+          {t.work.intro}
         </p>
       </div>
 
@@ -101,8 +105,8 @@ export default function ProjectsPro() {
       ))}
 
       <div className="mt-16 md:mt-24">
-        <p className="mb-6 font-mono text-[11px] uppercase tracking-wider md:text-xs">Et aussi</p>
-        <div className="grid gap-px border border-ink bg-ink sm:grid-cols-2 lg:grid-cols-3">
+        <p className="mb-6 font-mono text-[11px] uppercase tracking-wider md:text-xs">{t.work.also}</p>
+        <div className="grid grid-cols-[minmax(0,1fr)] gap-px border border-ink bg-ink sm:grid-cols-2 lg:grid-cols-3">
           {others.map((p) => {
             const href = p.links?.site;
             const Tag = href ? "a" : "div";
@@ -118,7 +122,7 @@ export default function ProjectsPro() {
                   {href && <span className="transition-transform group-hover:-translate-y-1 group-hover:translate-x-1">↗</span>}
                 </div>
                 <div>
-                  <h3 className="font-display mb-3 text-5xl">{p.title}</h3>
+                  <h3 className="font-display mb-3 text-[2.6rem] leading-none sm:text-5xl">{p.title}</h3>
                   <p className="text-sm leading-snug opacity-80">{p.tagline}</p>
                   <p className="mt-3 font-mono text-[11px] uppercase tracking-wider opacity-60">{p.stack.join(" · ")}</p>
                 </div>

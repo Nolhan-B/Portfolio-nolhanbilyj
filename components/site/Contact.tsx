@@ -1,35 +1,40 @@
 "use client";
 
 import { useRef } from "react";
-import { profile } from "@/data/projects";
-import { TitleChars, useReveal } from "@/components/site/useReveal";
+import { TitleParts, useReveal } from "@/components/site/useReveal";
+import { useLang } from "@/lib/i18n";
 import ContactForm from "@/components/site/ContactForm";
-
-const links = [
-  { label: "Téléphone", value: profile.phone, href: `tel:${profile.phone.replace(/\s/g, "")}` },
-  { label: "LinkedIn", value: "Nolhan Bilyj", href: profile.linkedin },
-  { label: "GitHub", value: "Nolhan-B", href: profile.github },
-  { label: "CV", value: "PDF ↓", href: profile.cv },
-];
 
 export default function Contact() {
   const root = useRef<HTMLElement>(null);
   useReveal(root);
+  const { t, lang, content } = useLang();
+  const profile = content.profile;
+  const links = [
+    { label: t.contact.phone, value: profile.phone, href: `tel:${profile.phone.replace(/\s/g, "")}` },
+    { label: "LinkedIn", value: "Nolhan Bilyj", href: profile.linkedin },
+    { label: "GitHub", value: "Nolhan-B", href: profile.github },
+    { label: "CV", value: t.contact.cvValue, href: profile.cv },
+  ];
 
   return (
     <section ref={root} id="contact" className="flex min-h-[100svh] flex-col justify-between px-4 pt-24 md:px-8 md:pt-32">
       <div>
-        <p className="mb-6 font-mono text-[11px] uppercase tracking-wider md:text-xs">(06) Contact</p>
-        <h2 data-title className="font-display text-[14.8vw] md:text-[12.5vw]" aria-label="Une alternance ? Parlons-en.">
-          <TitleChars text={"Une alternance\u00a0?"} />
-          <TitleChars text="Parlons-en." className="text-grain" />
+        <p className="mb-6 font-mono text-[11px] uppercase tracking-wider md:text-xs">{t.contact.label}</p>
+        {/* « Apprenticeship? » est un seul long mot : taille calée pour tenir sur une ligne */}
+        <h2
+          data-title
+          className={`font-display ${lang === "en" ? "text-[11.4vw] md:text-[11.5vw]" : "text-[14.8vw] md:text-[12.5vw]"}`}
+          aria-label={t.contact.title.map((p) => p.text).join(" ")}
+        >
+          <TitleParts parts={t.contact.title} />
         </h2>
 
         <dl data-reveal className="mt-12 grid gap-px border border-ink bg-ink sm:grid-cols-3 md:mt-16">
           {[
-            ["Début", profile.alternance.start],
-            ["Rythme", profile.alternance.rhythm],
-            ["Durée", profile.alternance.duration],
+            [t.contact.start, profile.alternance.start],
+            [t.contact.rhythm, profile.alternance.rhythm],
+            [t.contact.duration, profile.alternance.duration],
           ].map(([term, value], i) => (
             <div key={term} className={`p-5 ${i === 0 ? "grain-bg text-on-grain" : "bg-paper"}`}>
               <dt className="font-mono text-[11px] uppercase tracking-wider opacity-60">{term}</dt>
@@ -40,7 +45,7 @@ export default function Contact() {
 
         <div className="mt-12 grid gap-12 md:mt-16 lg:grid-cols-12 lg:gap-10">
           <div data-reveal className="lg:col-span-5">
-            <p className="mb-3 font-mono text-[11px] uppercase tracking-wider opacity-60">Par email</p>
+            <p className="mb-3 font-mono text-[11px] uppercase tracking-wider opacity-60">{t.contact.byEmail}</p>
             <a
               href={`mailto:${profile.email}`}
               className="grain-hover font-display-wide inline-block text-[5.4vw] underline decoration-ink decoration-[0.06em] underline-offset-[0.15em] sm:text-3xl lg:text-[2.3vw]"
@@ -67,7 +72,7 @@ export default function Contact() {
             </div>
           </div>
           <div data-reveal className="lg:col-span-6 lg:col-start-7">
-            <p className="mb-6 font-mono text-[11px] uppercase tracking-wider opacity-60">Ou via ce formulaire</p>
+            <p className="mb-6 font-mono text-[11px] uppercase tracking-wider opacity-60">{t.contact.orForm}</p>
             <ContactForm />
           </div>
         </div>
@@ -84,7 +89,7 @@ export default function Contact() {
           </a>
         </span>
         <a href="#top" className="hover:line-through">
-          Retour en haut ↑
+          {t.contact.backToTop}
         </a>
       </footer>
     </section>

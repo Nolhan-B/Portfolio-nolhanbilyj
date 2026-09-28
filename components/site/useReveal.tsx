@@ -55,3 +55,14 @@ export function TitleChars({ text, className }: { text: string; className?: stri
     </span>
   );
 }
+
+// Titre de section en plusieurs parties, certaines en dégradé (ex. « Projets » + « 42 »)
+export function TitleParts({ parts }: { parts: { text: string; grain?: boolean }[] }) {
+  return (
+    <>
+      {parts.map((p) => (
+        <TitleChars key={p.text} text={p.text} className={p.grain ? "text-grain" : undefined} />
+      ))}
+    </>
+  );
+}

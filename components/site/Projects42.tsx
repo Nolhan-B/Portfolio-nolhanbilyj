@@ -3,21 +3,15 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { profile, projects42, type Project } from "@/data/projects";
+import type { Project } from "@/data/projects";
+import { useLang } from "@/lib/i18n";
+import { TitleParts } from "@/components/site/useReveal";
 import Gallery from "@/components/site/Gallery";
-
-const tagLabels: Record<string, string> = {
-  web: "Web",
-  backend: "Backend",
-  ia: "IA",
-  systemes: "Systèmes",
-  mobile: "Mobile",
-  devops: "DevOps",
-};
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
 function Row({ project, index, open, onToggle }: { project: Project; index: number; open: boolean; onToggle: () => void }) {
+  const { t } = useLang();
   return (
     <li data-row className="border-t border-paper/25">
       <button
@@ -37,12 +31,12 @@ function Row({ project, index, open, onToggle }: { project: Project; index: numb
           {project.status === "en-cours" && (
             <span className="grain-bg flex items-center gap-2 rounded-full px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-on-grain group-hover:!bg-none group-hover:bg-ink group-hover:text-paper">
               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-current" />
-              En cours
+              {t.p42.inProgress}
             </span>
           )}
         </span>
         <span className="relative hidden text-right font-mono text-xs uppercase tracking-wider transition-colors group-hover:text-on-grain md:block">
-          <span className="block">{project.tags.map((t) => tagLabels[t]).join(" · ")}</span>
+          <span className="block">{project.tags.map((tag) => t.p42.tags[tag]).join(" · ")}</span>
           <span className="block opacity-60">{project.period}</span>
         </span>
       </button>
@@ -51,8 +45,8 @@ function Row({ project, index, open, onToggle }: { project: Project; index: numb
         className="grid transition-[grid-template-rows] duration-700 ease-expo"
         style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
       >
-        <div className="overflow-hidden">
-          <div className="grid gap-8 px-4 pb-10 pt-2 md:grid-cols-12 md:px-8 md:pb-14">
+        <div className="min-w-0 overflow-hidden">
+          <div className="grid grid-cols-[minmax(0,1fr)] gap-8 px-4 pb-10 pt-2 md:grid-cols-12 md:px-8 md:pb-14">
             {project.images?.length ? (
               <div className="md:col-span-8 md:col-start-2">
                 <Gallery project={project} sizes="(min-width: 768px) 70vw, 100vw" />
@@ -60,7 +54,7 @@ function Row({ project, index, open, onToggle }: { project: Project; index: numb
             ) : null}
             <div className="md:col-span-5 md:col-start-2">
               <p className="mb-4 font-mono text-[11px] uppercase tracking-wider text-paper/60">{project.context}</p>
-              <p className="font-display-wide text-3xl md:text-[2.6vw]">{project.tagline}</p>
+              <p className="font-display-wide text-2xl sm:text-3xl md:text-[2.6vw]">{project.tagline}</p>
             </div>
             <div className="md:col-span-5 md:col-start-8">
               <p className="text-base leading-relaxed text-paper/80 md:text-lg">{project.description}</p>
@@ -86,7 +80,7 @@ function Row({ project, index, open, onToggle }: { project: Project; index: numb
                   rel="noreferrer"
                   className="mt-8 inline-block bg-paper px-5 py-3 font-mono text-xs uppercase tracking-wider text-ink transition-colors hover:grain-bg hover:text-on-grain"
                 >
-                  Voir sur GitHub ↗
+                  {t.p42.github}
                 </a>
               )}
             </div>
@@ -99,6 +93,8 @@ function Row({ project, index, open, onToggle }: { project: Project; index: numb
 
 export default function Projects42() {
   const root = useRef<HTMLElement>(null);
+  const { t, content } = useLang();
+  const { profile, projects42 } = content;
   const [open, setOpen] = useState<string | null>(projects42[0].slug);
   const featured = projects42.filter((p) => p.featured);
   const others = projects42.filter((p) => !p.featured);
@@ -132,32 +128,18 @@ export default function Projects42() {
     <section ref={root} id="projets-42" className="on-ink bg-ink pb-24 pt-24 text-paper md:pt-32">
       <div className="mb-12 grid gap-6 px-4 md:mb-20 md:grid-cols-12 md:px-8">
         <p className="font-mono text-[11px] uppercase tracking-wider md:col-span-12 md:text-xs">
-          (03) Tronc commun 42 Next — École 42 Mulhouse
+          {t.p42.label}
         </p>
         <h2
           data-title
           className="font-display flex flex-wrap items-end gap-x-[0.12em] text-[20vw] md:col-span-12 md:text-[15.5vw]"
-          aria-label="Projets 42"
+          aria-label={t.p42.title.map((p) => p.text).join(" ")}
         >
-          <span className="line-mask">
-            {"Projets".split("").map((c, i) => (
-              <span key={i} data-title-char className="inline-block">
-                {c}
-              </span>
-            ))}
-          </span>
-          <span className="line-mask text-grain">
-            {"42".split("").map((c, i) => (
-              <span key={i} data-title-char className="inline-block">
-                {c}
-              </span>
-            ))}
-          </span>
+          <TitleParts parts={t.p42.title} />
         </h2>
         <div className="md:col-span-5 md:col-start-8">
           <p className="text-lg leading-snug text-paper/80 md:text-xl">
-            Pas de cours, pas de prof : du peer learning, de la peer evaluation et des projets à rendre.
-            C&apos;est là que j&apos;ai appris les systèmes, le réseau, la concurrence et l&apos;IA.
+            {t.p42.intro}
           </p>
         </div>
       </div>
@@ -169,8 +151,8 @@ export default function Projects42() {
       </ul>
 
       <div className="mt-20 px-4 md:mt-28 md:px-8">
-        <p className="mb-6 font-mono text-[11px] uppercase tracking-wider md:text-xs">Aussi à 42</p>
-        <div className="grid gap-px bg-paper/25 sm:grid-cols-2 lg:grid-cols-4">
+        <p className="mb-6 font-mono text-[11px] uppercase tracking-wider md:text-xs">{t.p42.also}</p>
+        <div className="grid grid-cols-[minmax(0,1fr)] gap-px bg-paper/25 sm:grid-cols-2 lg:grid-cols-4">
           {others.map((p) => {
             const Tag = p.links?.github ? "a" : "div";
             return (
@@ -185,7 +167,7 @@ export default function Projects42() {
                   {p.links?.github && <span className="transition-transform group-hover:-translate-y-1 group-hover:translate-x-1">↗</span>}
                 </div>
                 <div>
-                  <h3 className="font-display mb-3 text-5xl">{p.title}</h3>
+                  <h3 className="font-display mb-3 text-[2.6rem] leading-none sm:text-5xl">{p.title}</h3>
                   <p className="text-sm leading-snug opacity-80">{p.tagline}</p>
                   <p className="mt-3 font-mono text-[11px] uppercase tracking-wider opacity-60">{p.stack.join(" · ")}</p>
                 </div>
@@ -200,14 +182,15 @@ export default function Projects42() {
             className="group flex min-h-[15rem] flex-col justify-between bg-ink p-5 transition-colors hover:grain-bg hover:text-on-grain"
           >
             <div className="flex items-start justify-between font-mono text-[11px] uppercase tracking-wider opacity-60">
-              <span>Et le reste</span>
+              <span>{t.p42.rest}</span>
               <span className="transition-transform group-hover:-translate-y-1 group-hover:translate-x-1">↗</span>
             </div>
             <div>
-              <h3 className="font-display mb-3 text-5xl">
-                Tout mon <span className="text-grain group-hover:text-on-grain group-hover:[background:none]">GitHub</span>
+              <h3 className="font-display mb-3 text-[2.6rem] leading-none sm:text-5xl">
+                {t.p42.allGithub[0]}{" "}
+                <span className="text-grain group-hover:text-on-grain group-hover:[background:none]">{t.p42.allGithub[1]}</span>
               </h3>
-              <p className="text-sm leading-snug opacity-80">Tous les projets, les piscines et ce qui est en cours.</p>
+              <p className="text-sm leading-snug opacity-80">{t.p42.allGithubText}</p>
             </div>
           </a>
         </div>

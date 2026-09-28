@@ -1,8 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import { experiences, profile } from "@/data/projects";
-import { TitleChars, useReveal } from "@/components/site/useReveal";
+import { TitleParts, useReveal } from "@/components/site/useReveal";
+import { useLang } from "@/lib/i18n";
 
 function age(birthDate: string) {
   const b = new Date(birthDate);
@@ -14,32 +14,29 @@ function age(birthDate: string) {
 export default function About() {
   const root = useRef<HTMLElement>(null);
   useReveal(root);
+  const { t, lang, content } = useLang();
+  const { profile, experiences } = content;
 
   const main = experiences.filter((e) => !e.minor);
   const minor = experiences.filter((e) => e.minor);
 
   return (
     <section ref={root} id="parcours" className="border-t border-ink/15 px-4 pb-24 pt-24 md:px-8 md:pb-32 md:pt-32">
-      <p className="mb-6 font-mono text-[11px] uppercase tracking-wider md:text-xs">(02) Qui suis-je</p>
-      <h2 data-title className="font-display mb-14 text-[20vw] md:mb-20 md:text-[15.5vw]" aria-label="Parcours">
-        <TitleChars text="Parcours" />
+      <p className="mb-6 font-mono text-[11px] uppercase tracking-wider md:text-xs">{t.about.label}</p>
+      <h2 data-title className={`font-display mb-14 md:mb-20 md:text-[15.5vw] ${lang === "en" ? "text-[15.5vw]" : "text-[20vw]"}`} aria-label={t.about.title.map((p) => p.text).join(" ")}>
+        <TitleParts parts={t.about.title} />
       </h2>
 
       <div className="grid gap-16 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <p data-reveal className="text-xl font-medium leading-snug md:text-2xl">
-            J&apos;ai {age(profile.birthDate)} ans, je vis près de Belfort, et je suis développeur logiciel en formation à
-            42 Mulhouse.
+            {t.about.lead(age(profile.birthDate))}
           </p>
-          <p data-reveal className="mt-6 text-base leading-relaxed opacity-80 md:text-lg">
-            Je suis arrivé au code après une réorientation : ni STAPS ni le BUT MMI ne me correspondaient. Le déclic est
-            venu en créant le site VTC de mon père. Une première école et un stage m&apos;ont ensuite appris
-            l&apos;architecture logicielle (DDD, CQRS, TDD).
-          </p>
-          <p data-reveal className="mt-6 text-base leading-relaxed opacity-80 md:text-lg">
-            Aujourd&apos;hui, je suis le plus avancé de ma promo à 42 et je travaille en freelance à côté. Hors code :
-            tennis de table en compétition (classé 12), musculation, powerlifting et vélo.
-          </p>
+          {t.about.paragraphs.map((text) => (
+            <p key={text} data-reveal className="mt-6 text-base leading-relaxed opacity-80 md:text-lg">
+              {text}
+            </p>
+          ))}
           <div data-reveal className="mt-8 flex flex-wrap gap-2">
             {profile.languages.map((l) => (
               <span key={l} className="border border-ink/30 px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider">

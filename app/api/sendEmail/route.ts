@@ -15,7 +15,7 @@ const isEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
 export async function POST(req: Request) {
   try {
-    const { identity, email, subject, content, website } = await req.json();
+    const { identity, email, subject, content, website, lang } = await req.json();
 
     // Champ piège rempli : c'est un robot, on fait comme si tout s'était bien passé
     if (website) return NextResponse.json({ success: true });
@@ -27,16 +27,18 @@ export async function POST(req: Request) {
       !identity.trim() ||
       !content.trim()
     ) {
-      return NextResponse.json({ error: "Tous les champs sont requis." }, { status: 400 });
+      return NextResponse.json({ error: "Tous les champs sont requis.", code: "required" }, { status: 400 });
     }
     if (!isEmail(email) || email.length > 200) {
-      return NextResponse.json({ error: "Adresse email invalide." }, { status: 400 });
+      return NextResponse.json({ error: "Adresse email invalide.", code: "email" }, { status: 400 });
     }
     if (identity.length > 120 || content.length > 5000) {
-      return NextResponse.json({ error: "Message trop long." }, { status: 400 });
+      return NextResponse.json({ error: "Message trop long.", code: "tooLong" }, { status: 400 });
     }
 
     const readableSubject = subjectMapping[subject] ?? "Autre";
+    // Signale les messages écrits depuis la version anglaise du site
+    const langTag = lang === "en" ? " [EN]" : "";
 
     const transporter = nodemailer.createTransport({
       host: "ssl0.ovh.net",
@@ -64,13 +66,13 @@ export async function POST(req: Request) {
       from: "portfolio-nolhan-bilyj-contact@db-vtc-belfort.fr",
       to: "nolhanbil@gmail.com",
       replyTo: email,
-      subject: `Portfolio — ${readableSubject} — ${identity.slice(0, 60)}`,
+      subject: `Portfolio${langTag} — ${readableSubject} — ${identity.slice(0, 60)}`,
       html,
     });
 
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Erreur lors de l'envoi de l'email :", error instanceof Error ? error.message : error);
-    return NextResponse.json({ error: "L'envoi a échoué." }, { status: 500 });
+    return NextResponse.json({ error: "L'envoi a échoué.", code: "failed" }, { status: 500 });
   }
 }
