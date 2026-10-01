@@ -54,7 +54,7 @@ function Row({ project, index, open, onToggle }: { project: Project; index: numb
             ) : null}
             <div className="md:col-span-5 md:col-start-2">
               <p className="mb-4 font-mono text-[11px] uppercase tracking-wider text-paper/60">{project.context}</p>
-              <p className="font-display-wide text-2xl sm:text-3xl md:text-[2.6vw]">{project.tagline}</p>
+              <p className="font-display-wide text-2xl leading-[0.95] sm:text-3xl sm:leading-[0.95] md:text-[2.6vw]">{project.tagline}</p>
             </div>
             <div className="md:col-span-5 md:col-start-8">
               <p className="text-base leading-relaxed text-paper/80 md:text-lg">{project.description}</p>
