@@ -70,9 +70,9 @@ export const experiences: Experience[] = [
   },
   {
     period: "2025 — aujourd'hui",
-    title: "Développeur web freelance",
+    title: "Développeur logiciel freelance",
     place: "Indépendant",
-    description: "Applications métier et sites pour des clients : KL Studio Logistiques, Publih-Corteva, Inmemorium, M Studio Print, Sanomax Solution.",
+    description: "Applications métier (gestion de stock, facturation, traduction par IA) et sites web pour des clients, dont M Studio Print et Sanomax Solution.",
   },
   {
     period: "Mars — Juil. 2025",
@@ -325,15 +325,15 @@ export const projects42: Project[] = [
 
 export const projectsPro: Project[] = [
   {
-    slug: "kl-logistique",
-    title: "KL Studio Logistiques",
+    slug: "projet-logistique",
+    title: "Projet logistique",
     featured: true,
-    period: "2025 — 2026",
+    period: "2026",
     status: "production",
     context: "Client — freelance",
     tagline: "Un logiciel de gestion de stock, conçu de A à Z en architecture propre.",
     description:
-      "Application de gestion de stock développée intégralement pour KL Studio Logistiques : sessions d'inventaire par emplacement, suivi des opérateurs, valorisation financière du stock et import du catalogue.",
+      "Application Symfony de gestion de stock développée intégralement pour un client : sessions d'inventaire par emplacement, suivi des opérateurs, valorisation financière du stock et import du catalogue.",
     highlights: [
       "Gestion multi-stock et sessions d'inventaire suivies par statut",
       "Valorisation du stock par emplacement et par article",
@@ -344,10 +344,8 @@ export const projectsPro: Project[] = [
     stack: ["PHP", "Symfony", "Doctrine", "PHPUnit"],
     tags: ["backend", "web"],
     images: [
-      "/projects/kl-dashboard.webp",
-      "/projects/kl-valorisation.webp",
-      "/projects/kl-scan.webp",
-      "/projects/kl-connexion.webp",
+      "/projects/logistique-dashboard.webp",
+      "/projects/logistique-valorisation.webp",
     ],
   },
   {
@@ -454,10 +452,10 @@ export const projectsPro: Project[] = [
     ],
   },
   {
-    slug: "publih-corteva",
-    title: "Publih-Corteva",
+    slug: "projet-facturation",
+    title: "Projet de facturation",
     featured: false,
-    period: "2025 — 2026",
+    period: "2025",
     context: "Client — freelance",
     tagline: "Module de facturation intégré à un logiciel existant.",
     description: "Implémentation à la demande du client d'un module de facturation.",
@@ -466,16 +464,16 @@ export const projectsPro: Project[] = [
     tags: ["web", "backend"],
   },
   {
-    slug: "inmemorium",
-    title: "Inmemorium",
+    slug: "projet-traduction-ia",
+    title: "Projet traduction IA",
     featured: false,
-    period: "2025 — 2026",
+    period: "2025",
     context: "Client — freelance",
     tagline: "Traduction par IA des contenus écrits par les utilisateurs.",
     description:
       "Implémentation à la demande du client : des boutons de traduction qui traduisent par IA les textes saisis par les utilisateurs, dans la langue choisie par le lecteur.",
     highlights: ["Traduction par IA du contenu utilisateur", "Bouton de traduction et choix de la langue"],
-    stack: ["IA", "Web"],
+    stack: ["LLM", "Web"],
     tags: ["web", "ia"],
   },
   {

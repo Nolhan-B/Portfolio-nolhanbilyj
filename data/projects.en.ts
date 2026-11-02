@@ -2,6 +2,7 @@
 // data/content.ts vérifie au chargement qu'aucun projet ni aucune expérience n'est oublié.
 
 export type ProjectText = {
+  title?: string;
   period: string;
   context: string;
   tagline: string;
@@ -48,9 +49,9 @@ export const experiencesEn: ExperienceText[] = [
   },
   {
     period: "2025 — present",
-    title: "Freelance web developer",
+    title: "Freelance software developer",
     place: "Self-employed",
-    description: "Business applications and websites for clients: KL Studio Logistiques, Publih-Corteva, Inmemorium, M Studio Print, Sanomax Solution.",
+    description: "Business applications (stock management, invoicing, AI translation) and websites for clients, including M Studio Print and Sanomax Solution.",
   },
   {
     period: "Mar. — Jul. 2025",
@@ -213,12 +214,13 @@ export const projectsEn: Record<string, ProjectText> = {
     description: "Four intensive weeks to get into 42: C, Shell and team projects (rushes).",
     highlights: ["C00 to C09, Shell00 and Shell01", "Team rushes"],
   },
-  "kl-logistique": {
-    period: "2025 — 2026",
+  "projet-logistique": {
+    title: "Logistics project",
+    period: "2026",
     context: "Client — freelance",
     tagline: "Stock management software, built from scratch with a clean architecture.",
     description:
-      "A stock management application built end to end for KL Studio Logistiques: inventory sessions per location, operator tracking, financial stock valuation and catalog import.",
+      "A Symfony stock management application built end to end for a client: inventory sessions per location, operator tracking, financial stock valuation and catalog import.",
     highlights: [
       "Multi-stock management and inventory sessions tracked by status",
       "Stock valuation per location and per item",
@@ -280,15 +282,17 @@ export const projectsEn: Record<string, ProjectText> = {
       "Volunteer and attendee management, email invitations, CSV export",
     ],
   },
-  "publih-corteva": {
-    period: "2025 — 2026",
+  "projet-facturation": {
+    title: "Invoicing project",
+    period: "2025",
     context: "Client — freelance",
     tagline: "An invoicing module built into existing software.",
     description: "An invoicing module implemented at the client's request.",
     highlights: ["Order payment management", "Filters and paid / unpaid tracking", "PDF export"],
   },
-  inmemorium: {
-    period: "2025 — 2026",
+  "projet-traduction-ia": {
+    title: "AI translation project",
+    period: "2025",
     context: "Client — freelance",
     tagline: "AI translation of user-written content.",
     description:
